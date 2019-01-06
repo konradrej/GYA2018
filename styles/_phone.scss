@@ -1,0 +1,6 @@
+@media (max-width: 700px) {
+	@include view-1__phone();
+	@include view-2__phone();
+	@include view-3__phone();
+	@include view-4__phone();
+}

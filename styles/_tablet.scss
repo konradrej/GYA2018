@@ -1,0 +1,6 @@
+@media (min-width: 700px) and (max-width: 1200px) {
+	@include view-1__tablet();
+	@include view-2__tablet();
+	@include view-3__tablet();
+	@include view-4__tablet();
+}

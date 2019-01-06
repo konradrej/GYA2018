@@ -1,0 +1,6 @@
+@media (min-width: 1200px) {
+	@include view-1__desktop();
+	@include view-2__desktop();
+	@include view-3__desktop();
+	@include view-4__desktop();
+}

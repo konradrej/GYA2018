@@ -1,0 +1,29 @@
+https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files
+https://fonts.google.com/specimen/Noto+Sans?selection.family=Noto+Sans
+
+sublime text
+dart sass
+github desktop/git
+tinyjpg.com
+tinypng.com
+
+vyer:					-> vad behövs i vyn
+1. första inställningar/start		-> start knapp, välj antal rutor, se gamla resultat
+2. ingame					-> 2 grid med rätt antal rutor, ruta som säger vad som händer (din tur, motståndares tur, träff etc)
+	2.1 placera skepp			-> toolbar med skepptyper att placera och antal, sätt att placera skeppen
+	2.2 spelare gissar
+	2.3 spelare sänker skepp
+3. game over				-> gameover box, win animation, statbox
+4. spela igen				-> välj inställningar, start knapp, se stats av föregående matcher
+
+
+stats:
+spelare/dator vann
+spelar namn, antal prickade skott, antal sänkta skepp
+
+feature requests:
+namnge skepp
+
+notes:
+större rutor/text på mobil för att enklare klicka rätt/se
+gör pwa
