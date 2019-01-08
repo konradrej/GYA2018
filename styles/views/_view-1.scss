@@ -1,72 +1,22 @@
-@keyframes scroll-arrow-1 {
-	0% {
-		opacity: 0;
-	}
-
-	10% {
-		opacity: 0;
-	}
-
-	40% {
-		opacity: 1;
-	}
-
-	55% {
-		opacity: 1;
-	}
-
-	85% {
-		opacity: 0;
-	}
-
-	100% {
-		opacity: 0;
-	}
-}
-
-@keyframes scroll-arrow-2 {
-	0% {
-		opacity: 0;
-	}
-
-	20% {
-		opacity: 0;
-	}
-
-	50% {
-		opacity: 1;
-	}
-
-	65% {
-		opacity: 1;
-	}
-
-	95% {
-		opacity: 0;
-	}
-
-	100% {
-		opacity: 0;
-	}
-}
-
-@keyframes load {
-	0% {
-		margin-top: 45vh;
-		opacity: 0;
-	}
-
-	100% {
-		margin-top: 40vh;
-		opacity: 1;
-	}
-}
-
 section#view-1 {
 	width: 100%;
 	height: auto;
 	min-height: 100vh;
 	text-align: center;
+	top: 0;
+	left: 0;
+
+
+	display: none;
+
+	//z-index: 9999;
+	//position: absolute;
+
+
+	//animation-name: view_unload;
+	//animation-fill-mode: forwards;
+	//animation-duration: 1s;
+	//animation-delay: 5s;
 
 	div#landing {
 		width: 100%;
@@ -87,7 +37,7 @@ section#view-1 {
 			margin: 40vh auto 0;
 			transform: translateY(-50%);
 			background: rgba(255, 255, 255, 0.8);
-			animation-name: load;
+			animation-name: view-1_load;
 			animation-fill-mode: forwards;
 			animation-duration: 2s;
 

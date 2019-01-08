@@ -1,15 +1,167 @@
 section#view-2 {
-	display: none;
+	width: 100%;
+	height: 100vh;
+	background: #0066cc;
+	border-top: 1px solid transparent;
+	box-sizing: border-box;
+	padding: 2rem;
+	top: 0;
+	left: 0;
+
+
+	//position: absolute;
+	//z-index: 0;
+
+
+	//animation-name: view_load;
+	//animation-fill-mode: forwards;
+	//animation-duration: 1s;
+	//animation-delay: 5s;
+
+	div.wrapper {
+		max-width: 1053px;
+		display: flex;
+		justify-content: space-around;
+		margin: auto;
+
+		div.column {
+			&.grid {
+				margin-right: 2rem;
+				width: calc(100vw - 6rem - 300px);
+				height: calc(100vw - 6rem - 300px);
+				max-width: 700px;
+				max-height: 700px;
+
+				table {
+					background: white;
+					border-collapse: collapse;
+					table-layout: fixed;
+					width: 100%;
+					height: 100%;
+
+					tr {
+						th {
+							border: 1px solid black;
+						}
+
+						td {
+							border: 1px solid black;
+						}
+					}
+				}
+			}
+
+			&.toolbar {
+				flex: 0 0 305px;
+
+				h1 {
+					text-shadow:
+						   -1px -1px 0 #000,  
+						    1px -1px 0 #000,
+						    -1px 1px 0 #000,
+						     1px 1px 0 #000;
+					color: white;
+					text-align: center;
+				}
+
+				div.container__ships {
+					background: white;
+					border: 1px solid black;
+					padding: 10px;
+
+					h2 {
+						margin-top: 0;
+						margin-bottom: 10px;
+						font-size: 1.1em;
+						text-align: center;
+					}
+
+					div.ships {
+						line-height: 50px;
+						margin-bottom: 10px;
+
+						&.ships__carrier {
+							&:before {
+								content: '1x';
+								display: inline;
+							}
+						}
+
+						&.ships__battleship {
+							&:before {
+								content: '1x';
+								display: inline;
+							}
+						}
+
+						&.ships__cruiser {
+							&:before {
+								content: '1x';
+								display: inline;
+							}
+						}
+
+						&.ships__submarine {
+							&:before {
+								content: '1x';
+								display: inline;
+							}
+						}
+
+						&.ships__destroyer {
+							&:before {
+								content: '1x';
+								display: inline;
+							}
+						}
+
+						div.ship__block {
+							width: 50px;
+							height: 50px;
+							border: 1px solid black;
+							border-left: 0;
+							background: orange;
+							display: block;
+							float: right;
+
+							&:last-child {
+								border-left: 1px solid black;
+							}
+						}
+
+
+
+						&:after {
+							content: '';
+							display: block;
+							clear: both;
+						}
+					}
+
+					button {
+						float: right;
+						font-size: 1em;
+					}
+
+					&:after {
+						clear: both;
+						content: '';
+						display: block;
+					}
+				}
+			}
+		}
+	}
 }
 
 @mixin view-2__desktop(){
-	
+
 }
 
 @mixin view-2__tablet(){
-	
+
 }
 
 @mixin view-2__phone(){
-	
+
 }

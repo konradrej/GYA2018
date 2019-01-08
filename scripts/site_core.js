@@ -16,3 +16,7 @@ function scrollToAnchor(hash) {
         return false;
     }
 }
+
+//if(window.location.hash){
+//    scrollToAnchor(window.location.hash);
+//}

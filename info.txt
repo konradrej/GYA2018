@@ -9,12 +9,12 @@ tinypng.com
 
 vyer:					-> vad behövs i vyn
 1. första inställningar/start		-> start knapp, välj antal rutor, se gamla resultat
-2. ingame					-> 2 grid med rätt antal rutor, ruta som säger vad som händer (din tur, motståndares tur, träff etc)
-	2.1 placera skepp			-> toolbar med skepptyper att placera och antal, sätt att placera skeppen
-	2.2 spelare gissar
-	2.3 spelare sänker skepp
-3. game over				-> gameover box, win animation, statbox
-4. spela igen				-> välj inställningar, start knapp, se stats av föregående matcher
+2. placera skepp			-> toolbar med skepptyper att placera och antal, sätt att placera skeppen
+3. ingame					-> 2 grid med rätt antal rutor, ruta som säger vad som händer (din tur, motståndares tur, träff etc), action log
+	3.1 spelare gissar			-> bekräfta ruta, små rutor på utkanten med bokstäver/siffror för att identifera rutor
+	3.2 spelare sänker skepp
+4. game over				-> gameover box, win animation, statbox
+1. spela igen				-> välj inställningar, start knapp, se stats av föregående matcher
 
 
 stats:
@@ -27,3 +27,15 @@ namnge skepp
 notes:
 större rutor/text på mobil för att enklare klicka rätt/se
 gör pwa
+
+skeppnamn/storlek:
+carrier 5x
+battleship 4x
+cruiser 3x
+submarine 3x
+destroyer 2x
+
+placera skepp:
+vid tryck på ikonen, anteckna vilket skepp, knapp för att välja vilket håll
+visa ikon som följer med pekaren
+kom ihåg start rutan och se ifall det går att placera där

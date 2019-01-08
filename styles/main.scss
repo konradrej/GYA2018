@@ -2,14 +2,17 @@ html, body {
 	margin: 0;
 	padding: 0;
 	font-size: 16px;
-	font-family: 'Noto Sans', sans-serif;
+	font-family: 'Noto Sans', 'Helvetica', sans-serif;
+	background: #0066cc;
 }
+
+@import 'components/animations';
 
 @import 'views/view-1';
 @import 'views/view-2';
 @import 'views/view-3';
 @import 'views/view-4';
 
-@import 'desktop';
-@import 'tablet';
-@import 'phone';
+@import 'responsive/desktop';
+@import 'responsive/tablet';
+@import 'responsive/phone';

@@ -38,8 +38,24 @@ class player {
 	generateGridHTML(){
 		this.gridHTML = document.createElement("table");
 
+		var guide = 'ABCDEFGHIJ';
+
+		var header = document.createElement("tr");
+		var corner = document.createElement("th");
+		header.appendChild(corner);
+
+		for(var i = 0; i < this.grid.length; i++){
+			var head_item = document.createElement("th");
+			head_item.innerHTML = guide.charAt(i);
+			header.appendChild(head_item);
+		}
+		this.gridHTML.appendChild(header);
+
 		for(var y = 0; y < this.grid.length; y++){
 			var row = document.createElement("tr");
+			var head_item = document.createElement("th");
+			head_item.innerHTML = y+1;
+			row.appendChild(head_item);
 
 			for(var x = 0; x < this.grid[y].length; x++){
 				var column = document.createElement("td");
@@ -96,7 +112,7 @@ class game {
 
 				break;
 			default:
-				document.getElementsByClassName("player_one")[0].appendChild(this.p1.generateGridHTML());
+				document.getElementsByClassName("grid")[0].appendChild(this.p1.generateGridHTML());
 				document.getElementsByClassName("player_two")[0].appendChild(this.p2.generateGridHTML());
 
 		}
