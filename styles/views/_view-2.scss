@@ -20,17 +20,21 @@ section#view-2 {
 
 	div.wrapper {
 		max-width: 1053px;
+		height: 100%;
 		display: flex;
-		justify-content: space-around;
+		justify-content: center;
+		align-items: center;
 		margin: auto;
 
 		div.column {
 			&.grid {
 				margin-right: 2rem;
-				width: calc(100vw - 6rem - 300px);
-				height: calc(100vw - 6rem - 300px);
+				width: calc(100vw - 6rem - 240px);
+				height: calc(100vw - 6rem - 240px);
 				max-width: 700px;
 				max-height: 700px;
+				min-width: 280px;
+				min-height: 280px;
 
 				table {
 					background: white;
@@ -40,11 +44,7 @@ section#view-2 {
 					height: 100%;
 
 					tr {
-						th {
-							border: 1px solid black;
-						}
-
-						td {
+						th, td {
 							border: 1px solid black;
 						}
 					}
@@ -52,63 +52,62 @@ section#view-2 {
 			}
 
 			&.toolbar {
-				flex: 0 0 305px;
-
-				h1 {
-					text-shadow:
-						   -1px -1px 0 #000,  
-						    1px -1px 0 #000,
-						    -1px 1px 0 #000,
-						     1px 1px 0 #000;
-					color: white;
-					text-align: center;
-				}
+				flex: 0 0 240px;
 
 				div.container__ships {
 					background: white;
 					border: 1px solid black;
 					padding: 10px;
 
-					h2 {
-						margin-top: 0;
-						margin-bottom: 10px;
-						font-size: 1.1em;
+					h1 {
+						margin: 0 0 10px;
 						text-align: center;
+						width: 100%;
+						text-decoration: underline;
 					}
 
-					div.ships {
-						line-height: 50px;
-						margin-bottom: 10px;
+					div.ship {
+						line-height: 30px;
+						padding: 5px;
+						margin: 5px 0;
+						border: 1px solid black;
+						box-sizing: border-box;
 
-						&.ships__carrier {
+						h2 {
+							margin: 0 0 5px;
+							font-size: 1.1em;
+							text-align: center;
+						}
+
+						div.ship__carrier {
 							&:before {
 								content: '1x';
 								display: inline;
 							}
 						}
 
-						&.ships__battleship {
+						div.ship__battleship {
 							&:before {
 								content: '1x';
 								display: inline;
 							}
 						}
 
-						&.ships__cruiser {
+						div.ship__cruiser {
 							&:before {
 								content: '1x';
 								display: inline;
 							}
 						}
 
-						&.ships__submarine {
+						div.ship__submarine {
 							&:before {
 								content: '1x';
 								display: inline;
 							}
 						}
 
-						&.ships__destroyer {
+						div.ship__destroyer {
 							&:before {
 								content: '1x';
 								display: inline;
@@ -116,8 +115,8 @@ section#view-2 {
 						}
 
 						div.ship__block {
-							width: 50px;
-							height: 50px;
+							width: 30px;
+							height: 30px;
 							border: 1px solid black;
 							border-left: 0;
 							background: orange;
@@ -129,7 +128,23 @@ section#view-2 {
 							}
 						}
 
+						&.ship__active {
+							background: #3390FF;
+							color: white;
 
+							div.ship__block {
+								border-color: white;
+							}
+
+							&:hover {
+								background: #3390FF;
+								color: white;
+							}
+						}
+
+						&:hover {
+							background: lightblue;
+						}
 
 						&:after {
 							content: '';
@@ -141,6 +156,7 @@ section#view-2 {
 					button {
 						float: right;
 						font-size: 1em;
+						margin: 10px 0;
 					}
 
 					&:after {
@@ -164,4 +180,49 @@ section#view-2 {
 
 @mixin view-2__phone(){
 
+}
+
+@media (max-aspect-ratio: 9/13) {
+	section#view-2 {
+		div.wrapper {
+			display: block;
+
+			div.column {
+				display: block;
+
+				&.grid {
+					height: calc(100vw - 4rem);
+					margin: 0 0 2rem 0;
+					max-width: unset;
+					max-height: unset;
+					width: 100%;
+
+					table {
+						tr {
+							th, td {
+
+							}
+						}
+					}
+				}
+
+				&.toolbar {
+					width: 100%;
+					margin-bottom: 2rem;
+
+					div.container__ships {
+						h1 {
+							font-size: 2.1em;
+						}
+
+						button {
+							width: 100%;
+							margin: 10px 0;
+							font-size: 1.8em;
+						}
+					}
+				}
+			}
+		}
+	}
 }

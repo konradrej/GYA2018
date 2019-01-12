@@ -231,16 +231,20 @@ section#view-2 {
 }
 section#view-2 div.wrapper {
   max-width: 1053px;
+  height: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   margin: auto;
 }
 section#view-2 div.wrapper div.column.grid {
   margin-right: 2rem;
-  width: calc(100vw - 6rem - 300px);
-  height: calc(100vw - 6rem - 300px);
+  width: calc(100vw - 6rem - 240px);
+  height: calc(100vw - 6rem - 240px);
   max-width: 700px;
   max-height: 700px;
+  min-width: 280px;
+  min-height: 280px;
 }
 section#view-2 div.wrapper div.column.grid table {
   background: white;
@@ -249,68 +253,82 @@ section#view-2 div.wrapper div.column.grid table {
   width: 100%;
   height: 100%;
 }
-section#view-2 div.wrapper div.column.grid table tr th {
-  border: 1px solid black;
-}
-section#view-2 div.wrapper div.column.grid table tr td {
+section#view-2 div.wrapper div.column.grid table tr th, section#view-2 div.wrapper div.column.grid table tr td {
   border: 1px solid black;
 }
 section#view-2 div.wrapper div.column.toolbar {
-  flex: 0 0 305px;
-}
-section#view-2 div.wrapper div.column.toolbar h1 {
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  color: white;
-  text-align: center;
+  flex: 0 0 240px;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships {
   background: white;
   border: 1px solid black;
   padding: 10px;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships h2 {
-  margin-top: 0;
-  margin-bottom: 10px;
+section#view-2 div.wrapper div.column.toolbar div.container__ships h1 {
+  margin: 0 0 10px;
+  text-align: center;
+  width: 100%;
+  text-decoration: underline;
+}
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship {
+  line-height: 30px;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship h2 {
+  margin: 0 0 5px;
   font-size: 1.1em;
   text-align: center;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ships {
-  line-height: 50px;
-  margin-bottom: 10px;
-}
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ships.ships__carrier:before {
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__carrier:before {
   content: "1x";
   display: inline;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ships.ships__battleship:before {
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__battleship:before {
   content: "1x";
   display: inline;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ships.ships__cruiser:before {
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__cruiser:before {
   content: "1x";
   display: inline;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ships.ships__submarine:before {
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__submarine:before {
   content: "1x";
   display: inline;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ships.ships__destroyer:before {
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__destroyer:before {
   content: "1x";
   display: inline;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ships div.ship__block {
-  width: 50px;
-  height: 50px;
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__block {
+  width: 30px;
+  height: 30px;
   border: 1px solid black;
   border-left: 0;
   background: orange;
   display: block;
   float: right;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ships div.ship__block:last-child {
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__block:last-child {
   border-left: 1px solid black;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ships:after {
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship.ship__active {
+  background: #3390FF;
+  color: white;
+}
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship.ship__active div.ship__block {
+  border-color: white;
+}
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship.ship__active:hover {
+  background: #3390FF;
+  color: white;
+}
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship:hover {
+  background: lightblue;
+}
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship:after {
   content: "";
   display: block;
   clear: both;
@@ -318,6 +336,7 @@ section#view-2 div.wrapper div.column.toolbar div.container__ships div.ships:aft
 section#view-2 div.wrapper div.column.toolbar div.container__ships button {
   float: right;
   font-size: 1em;
+  margin: 10px 0;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships:after {
   clear: both;
@@ -325,6 +344,33 @@ section#view-2 div.wrapper div.column.toolbar div.container__ships:after {
   display: block;
 }
 
+@media (max-aspect-ratio: 9/13) {
+  section#view-2 div.wrapper {
+    display: block;
+  }
+  section#view-2 div.wrapper div.column {
+    display: block;
+  }
+  section#view-2 div.wrapper div.column.grid {
+    height: calc(100vw - 4rem);
+    margin: 0 0 2rem 0;
+    max-width: unset;
+    max-height: unset;
+    width: 100%;
+  }
+  section#view-2 div.wrapper div.column.toolbar {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  section#view-2 div.wrapper div.column.toolbar div.container__ships h1 {
+    font-size: 2.1em;
+  }
+  section#view-2 div.wrapper div.column.toolbar div.container__ships button {
+    width: 100%;
+    margin: 10px 0;
+    font-size: 1.8em;
+  }
+}
 section#view-3 {
   display: none;
 }

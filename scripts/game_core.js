@@ -1,15 +1,10 @@
-var tileState = {
-	WATER: 0,
-	SHIP: 1
-};
-
 var shipType = {
 	CARRIER: 5,
 	BATTLESHIP: 4,
 	CRUISER: 3,
-	SUBMARINE: 3,
-	DESTROYER: 2,
-	EMPTY: 0
+	SUBMARINE: 2,
+	DESTROYER: 1,
+	NONE: 0
 };
 
 class player {
@@ -30,7 +25,7 @@ class player {
 			this.grid[y] = new Array(size);
 
 			for(var x = 0; x < size; x++){
-				this.grid[y][x] = {state:tileState.WATER, hit:false};
+				this.grid[y][x] = {isHit: false, isShip: shipType.NONE};
 			}
 		}
 	}
@@ -78,18 +73,45 @@ class player {
 	// ISHIT RETURNS TRUE IF A SHIP IS HIT ON TILE AND FLASE IF IT DIDNT HIT A SHIP
 
 
-	checkTile(x, y){
-		if(this.grid[x][y]['hit']){
+	//hitTile
+	// if its already hit, return false
+	// if it isnt hit, return true and mark hit and check if its a ship or not
+	// if it is a ship, check if sunk
+
+	hitTile(x, y){
+		if(this.grid[x][y]['isHit']){
 			return false;
 		}else{
-			this.grid[x][y]['hit'] = true;
 
-			if(this.grid[x][y]['state'] == tileState.SHIP){
-
-			}else{
-
-			}
 		}
+	}
+
+	createShip(shipTypeID, direction, x, y){
+		var ship;
+
+		switch(shipTypeID){
+			case shipType.CARRIER:
+				ship.shipLength = 5;
+				break;
+			case shipType.BATTLESHIP:
+				ship.shipLength = 4;
+				break;
+			case shipType.CRUISER:
+			case shipType.SUBMARINE:
+				ship.length = 3;
+				break;
+			case shipType.DESTROYER:
+				ship.length = 2;
+				break;
+			default:
+				return false;
+		}
+
+
+	}
+
+	validShipPosition(x, y, length, direction){
+
 	}
 }
 
