@@ -7,6 +7,11 @@ section#view-2 {
 	padding: 2rem;
 	top: 0;
 	left: 0;
+	
+	// problem: content disappers at extreme ratio 30/9
+	// solution: code below but introduces vertical align problem when grid is limited by width and not height
+	//min-height: 100vh;
+	//height: auto;
 
 
 	//position: absolute;
@@ -35,6 +40,7 @@ section#view-2 {
 				max-height: 700px;
 				min-width: 280px;
 				min-height: 280px;
+				user-select: none;
 
 				table {
 					background: white;
@@ -72,6 +78,7 @@ section#view-2 {
 						margin: 5px 0;
 						border: 1px solid black;
 						box-sizing: border-box;
+ 						transition: all 0.2s;
 
 						h2 {
 							margin: 0 0 5px;
@@ -79,38 +86,40 @@ section#view-2 {
 							text-align: center;
 						}
 
-						div.ship__carrier {
+						div.ship__container {
 							&:before {
-								content: '1x';
+								content: attr(data-amount) 'x';
 								display: inline;
 							}
-						}
 
-						div.ship__battleship {
-							&:before {
-								content: '1x';
-								display: inline;
+							&.ship__carrier {
+								div.ship__block {
+									background: cyan;
+								}
 							}
-						}
 
-						div.ship__cruiser {
-							&:before {
-								content: '1x';
-								display: inline;
+							&.ship__battleship {
+								div.ship__block {
+									background: green;
+								}
 							}
-						}
 
-						div.ship__submarine {
-							&:before {
-								content: '1x';
-								display: inline;
+							&.ship__cruiser {
+								div.ship__block {
+									background: yellow;
+								}
 							}
-						}
 
-						div.ship__destroyer {
-							&:before {
-								content: '1x';
-								display: inline;
+							&.ship__submarine {
+								div.ship__block {
+									background: orange;
+								}
+							}
+
+							&.ship__destroyer {
+								div.ship__block {
+									background: red;
+								}
 							}
 						}
 
@@ -119,7 +128,6 @@ section#view-2 {
 							height: 30px;
 							border: 1px solid black;
 							border-left: 0;
-							background: orange;
 							display: block;
 							float: right;
 
@@ -155,8 +163,9 @@ section#view-2 {
 
 					button {
 						float: right;
+						clear: both;
 						font-size: 1em;
-						margin: 10px 0;
+						margin: 0 0 5px;
 					}
 
 					&:after {
@@ -213,6 +222,12 @@ section#view-2 {
 					div.container__ships {
 						h1 {
 							font-size: 2.1em;
+						}
+
+						div.ship {
+							h2 {
+								font-size: 1.6em;
+							}
 						}
 
 						button {

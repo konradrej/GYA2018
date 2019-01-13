@@ -17,6 +17,10 @@ function scrollToAnchor(hash) {
     }
 }
 
-//if(window.location.hash){
-//    scrollToAnchor(window.location.hash);
-//}
+var $notificationHolder = $("div#notifications-holder");
+function sendNotification(message, type){
+    if($notificationHolder.children().length >= 2){
+        $notificationHolder.children().first().remove();
+    }
+    $('<div class="notification '+type+'">'+message+'</div>').appendTo($notificationHolder).delay(2000).fadeOut(500);
+}

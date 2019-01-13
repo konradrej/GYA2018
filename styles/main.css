@@ -4,6 +4,68 @@ html, body {
   font-size: 16px;
   font-family: "Noto Sans", "Helvetica", sans-serif;
   background: #0066cc;
+  min-width: 350px;
+}
+
+.no-js {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999999999999999;
+  background: rgba(0, 0, 0, 0.7);
+}
+.no-js div {
+  top: 50%;
+  left: 10vw;
+  position: relative;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: white;
+  width: 80vw;
+  text-align: center;
+}
+
+div#notifications-holder {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+div#notifications-holder div.notification {
+  border: 4px solid rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.5);
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  font-size: 1.4em;
+  margin: 0 10px 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+  user-select: none;
+}
+div#notifications-holder div.notification:hover {
+  border-color: rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.8);
+}
+div#notifications-holder div.notification.error {
+  border-color: rgba(100, 0, 0, 0.5);
+  background: rgba(255, 0, 0, 0.5);
+}
+div#notifications-holder div.notification.error:hover {
+  border-color: rgba(100, 0, 0, 0.8);
+  background: rgba(255, 0, 0, 0.8);
+}
+div#notifications-holder div.notification.success {
+  border-color: rgba(0, 100, 0, 0.5);
+  background: rgba(0, 255, 0, 0.5);
+}
+div#notifications-holder div.notification.success:hover {
+  border-color: rgba(0, 100, 0, 0.8);
+  background: rgba(0, 255, 0, 0.8);
 }
 
 @keyframes scroll-arrow-1 {
@@ -245,6 +307,7 @@ section#view-2 div.wrapper div.column.grid {
   max-height: 700px;
   min-width: 280px;
   min-height: 280px;
+  user-select: none;
 }
 section#view-2 div.wrapper div.column.grid table {
   background: white;
@@ -276,38 +339,37 @@ section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship {
   margin: 5px 0;
   border: 1px solid black;
   box-sizing: border-box;
+  transition: all 0.2s;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship h2 {
   margin: 0 0 5px;
   font-size: 1.1em;
   text-align: center;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__carrier:before {
-  content: "1x";
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__container:before {
+  content: attr(data-amount) "x";
   display: inline;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__battleship:before {
-  content: "1x";
-  display: inline;
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__container.ship__carrier div.ship__block {
+  background: cyan;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__cruiser:before {
-  content: "1x";
-  display: inline;
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__container.ship__battleship div.ship__block {
+  background: green;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__submarine:before {
-  content: "1x";
-  display: inline;
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__container.ship__cruiser div.ship__block {
+  background: yellow;
 }
-section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__destroyer:before {
-  content: "1x";
-  display: inline;
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__container.ship__submarine div.ship__block {
+  background: orange;
+}
+section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__container.ship__destroyer div.ship__block {
+  background: red;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__block {
   width: 30px;
   height: 30px;
   border: 1px solid black;
   border-left: 0;
-  background: orange;
   display: block;
   float: right;
 }
@@ -335,8 +397,9 @@ section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship:afte
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships button {
   float: right;
+  clear: both;
   font-size: 1em;
-  margin: 10px 0;
+  margin: 0 0 5px;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships:after {
   clear: both;
@@ -364,6 +427,9 @@ section#view-2 div.wrapper div.column.toolbar div.container__ships:after {
   }
   section#view-2 div.wrapper div.column.toolbar div.container__ships h1 {
     font-size: 2.1em;
+  }
+  section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship h2 {
+    font-size: 1.6em;
   }
   section#view-2 div.wrapper div.column.toolbar div.container__ships button {
     width: 100%;
