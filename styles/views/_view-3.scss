@@ -8,7 +8,6 @@ section#view-3 {
 	top: 0;
 	left: 0;
 
-	display: none;
 
 
 
@@ -46,20 +45,52 @@ section#view-3 {
 					position: relative;
 					width: 100%;
 
-					table {
-						background: white;
-						border-collapse: collapse;
-						table-layout: fixed;
-						//width: calc(65vw - 4rem);
-						//height: calc(65vw - 4rem);
-						position: absolute;
+					div.game_grid {
 						width: 100%;
 						height: 100%;
+						display: grid;
+						grid-gap: 1px;
+						background: black;
+						position: absolute;
 
-						tr {
-							th, td {
-								border: 1px solid black;
+						div {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							background: white;
+							overflow: hidden;
+
+							&.grid_guide {
+
 							}
+
+							&.grid_square {
+
+							}
+						}
+
+						&.size-5 {
+							grid-template-columns: repeat(6, 1fr);
+						}
+
+						&.size-6 {
+							grid-template-columns: repeat(7, 1fr);
+						}
+
+						&.size-7 {
+							grid-template-columns: repeat(8, 1fr);
+						}
+
+						&.size-8 {
+							grid-template-columns: repeat(9, 1fr);
+						}
+
+						&.size-9 {
+							grid-template-columns: repeat(10, 1fr);
+						}
+
+						&.size-10 {
+							grid-template-columns: repeat(11, 1fr);
 						}
 					}
 
@@ -81,21 +112,52 @@ section#view-3 {
 					position: relative;
 					width: 100%;
 					
-					table {
-						background: white;
-						border-collapse: collapse;
-						table-layout: fixed;
-						//width: calc(35vw - 3rem);
-						//height: calc(35vw - 3rem);
-						position: absolute;
+					div.game_grid {
 						width: 100%;
 						height: 100%;
+						display: grid;
+						grid-gap: 1px;
+						background: black;
+						position: absolute;
 
+						div {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							background: white;
+							overflow: hidden;
 
-						tr {
-							th, td {
-								border: 1px solid black;
+							&.grid_guide {
+
 							}
+
+							&.grid_square {
+
+							}
+						}
+
+						&.size-5 {
+							grid-template-columns: repeat(6, 1fr);
+						}
+
+						&.size-6 {
+							grid-template-columns: repeat(7, 1fr);
+						}
+
+						&.size-7 {
+							grid-template-columns: repeat(8, 1fr);
+						}
+
+						&.size-8 {
+							grid-template-columns: repeat(9, 1fr);
+						}
+
+						&.size-9 {
+							grid-template-columns: repeat(10, 1fr);
+						}
+
+						&.size-10 {
+							grid-template-columns: repeat(11, 1fr);
 						}
 					}
 

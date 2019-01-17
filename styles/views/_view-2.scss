@@ -7,6 +7,7 @@ section#view-2 {
 	top: 0;
 	left: 0;
 
+	display: none;
 
 	// problem: content disappers at extreme ratio 30/9
 	// solution: code below but introduces vertical align problem when grid is limited by width and not height
