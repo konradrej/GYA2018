@@ -32,41 +32,35 @@ class player {
 	}
 
 	generateGridHTML(){
-		this.gridHTML = document.createElement("table");
+		this.gridHTML = document.createElement("div");
+		this.gridHTML.setAttribute("class", "game_grid size-"+this.size);
 
 		var guide = 'ABCDEFGHIJ';
+		for(var y = -1; y < this.grid.length; y++){
+			for(var x = -1; x < this.grid[0].length; x++){
+				var gridSquare = document.createElement("div");
 
-		var header = document.createElement("tr");
-		var corner = document.createElement("th");
-		header.appendChild(corner);
+				if(y == -1){
+					if(x != -1){
+						gridSquare.innerHTML = guide.charAt(x);
+						gridSquare.setAttribute("data-column", x);
+					}
 
-		for(var i = 0; i < this.grid.length; i++){
-			var head_item = document.createElement("th");
-			head_item.setAttribute("data-column", i);
-			head_item.innerHTML = guide.charAt(i);
-			header.appendChild(head_item);
-		}
+					gridSquare.setAttribute("class", "grid_guide");
+				}else{
+					if(x == -1){
+						gridSquare.innerHTML = y+1;
+						gridSquare.setAttribute("data-row", y);
+						gridSquare.setAttribute("class", "grid_guide");
+					}else{
+						gridSquare.setAttribute("data-row", y);
+						gridSquare.setAttribute("data-column", x);
+						gridSquare.setAttribute("class", "grid_square");
+					}
+				}
 
-		this.gridHTML.appendChild(header);
-
-		for(var y = 0; y < this.grid.length; y++){
-			var row = document.createElement("tr");
-			row.setAttribute("data-row", y);
-
-			var head_item = document.createElement("th");
-			head_item.innerHTML = y+1;
-			head_item.setAttribute("data-row", y);
-
-			row.appendChild(head_item);
-
-			for(var x = 0; x < this.grid[y].length; x++){
-				var column = document.createElement("td");
-				column.setAttribute("data-row", y);
-				column.setAttribute("data-column", x);
-				row.appendChild(column);
+				this.gridHTML.appendChild(gridSquare);
 			}
-
-			this.gridHTML.appendChild(row);
 		}
 
 		return this.gridHTML;
@@ -128,7 +122,6 @@ class player {
 		}
 
 		var isValid = this.validShipPosition(ship);
-
 		if(isValid.empty){
 			this.placeShip(ship, isValid.xPos, isValid.yPos);
 
@@ -209,7 +202,7 @@ class player {
 		for(var i = 0; i < ship.length; i++){
 			this.grid[xPos[i]][yPos[i]]['isShip'] = ship.ID;
 
-			$("td[data-column='"+xPos[i]+"'][data-row='"+yPos[i]+"']").css("background", ship.color);
+			$("div.grid_square[data-column='"+xPos[i]+"'][data-row='"+yPos[i]+"']").css("background", ship.color);
 		}
 	}
 }
@@ -257,7 +250,7 @@ $placeShip_Ships.click(function(){
 	currentGame.selectedShipID = $(this).attr("data-ship-id");
 });
 
-var $placeShip_td = $("section#view-2 .grid td");
+var $placeShip_td = $("section#view-2 div.grid div.grid_square");
 $placeShip_td.click(function(){
 	if(currentGame.selectedShipID == shipType.NONE){
 		return;
