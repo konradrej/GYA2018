@@ -451,6 +451,7 @@ section#view-3 {
   padding: 2rem;
   top: 0;
   left: 0;
+  display: none;
 }
 section#view-3 div.wrapper {
   display: grid;
