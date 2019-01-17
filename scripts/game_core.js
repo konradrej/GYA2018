@@ -236,7 +236,8 @@ class game {
 				break;
 			default:
 				document.getElementsByClassName("grid")[0].appendChild(p1.generateGridHTML());
-				document.getElementsByClassName("player_two")[0].appendChild(p2.generateGridHTML());
+				document.getElementsByClassName("player-container")[0].appendChild(p1.generateGridHTML());
+				document.getElementsByClassName("enemy-container")[0].appendChild(p2.generateGridHTML());
 
 		}
 	}

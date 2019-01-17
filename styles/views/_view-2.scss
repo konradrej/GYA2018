@@ -1,17 +1,17 @@
 section#view-2 {
 	width: 100%;
-	height: 100vh;
 	background: #0066cc;
 	border-top: 1px solid transparent;
 	box-sizing: border-box;
 	padding: 2rem;
 	top: 0;
 	left: 0;
-	
+
+
 	// problem: content disappers at extreme ratio 30/9
 	// solution: code below but introduces vertical align problem when grid is limited by width and not height
-	//min-height: 100vh;
-	//height: auto;
+	min-height: 100vh;
+	height: auto;
 
 
 	//position: absolute;
@@ -60,22 +60,28 @@ section#view-2 {
 			&.toolbar {
 				flex: 0 0 240px;
 
+				h1 {
+					margin: 0 0 10px;
+					text-align: center;
+					font-size: 1.6em;
+					width: 100%;
+					color: white;
+					text-shadow:
+						   -1px -1px 0 #000,
+						    1px -1px 0 #000,
+						    -1px 1px 0 #000,
+						     1px 1px 0 #000;
+				}
+
 				div.container__ships {
 					background: white;
 					border: 1px solid black;
 					padding: 10px;
 
-					h1 {
-						margin: 0 0 10px;
-						text-align: center;
-						width: 100%;
-						text-decoration: underline;
-					}
-
 					div.ship {
 						line-height: 30px;
 						padding: 5px;
-						margin: 5px 0;
+						margin: 0 0 5px;
 						border: 1px solid black;
 						box-sizing: border-box;
  						transition: all 0.2s;
@@ -166,6 +172,10 @@ section#view-2 {
 						clear: both;
 						font-size: 1em;
 						margin: 0 0 5px;
+
+						&:last-child {
+							margin-bottom: 0;
+						}
 					}
 
 					&:after {
@@ -219,11 +229,11 @@ section#view-2 {
 					width: 100%;
 					margin-bottom: 2rem;
 
-					div.container__ships {
-						h1 {
-							font-size: 2.1em;
-						}
+					h1 {
+						font-size: 1.9em;
+					}
 
+					div.container__ships {
 						div.ship {
 							h2 {
 								font-size: 1.6em;
@@ -232,7 +242,6 @@ section#view-2 {
 
 						button {
 							width: 100%;
-							margin: 10px 0;
 							font-size: 1.8em;
 						}
 					}
