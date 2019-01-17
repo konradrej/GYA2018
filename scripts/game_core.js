@@ -33,7 +33,7 @@ class player {
 
 	generateGridHTML(){
 		this.gridHTML = document.createElement("div");
-		this.gridHTML.setAttribute("class", "game_grid");
+		this.gridHTML.setAttribute("class", "game_grid size-"+this.size);
 
 		var guide = 'ABCDEFGHIJ';
 		for(var y = -1; y < this.grid.length; y++){
@@ -202,7 +202,7 @@ class player {
 		for(var i = 0; i < ship.length; i++){
 			this.grid[xPos[i]][yPos[i]]['isShip'] = ship.ID;
 
-			$("td[data-column='"+xPos[i]+"'][data-row='"+yPos[i]+"']").css("background", ship.color);
+			$("div.grid_square[data-column='"+xPos[i]+"'][data-row='"+yPos[i]+"']").css("background", ship.color);
 		}
 	}
 }
@@ -250,7 +250,7 @@ $placeShip_Ships.click(function(){
 	currentGame.selectedShipID = $(this).attr("data-ship-id");
 });
 
-var $placeShip_td = $("section#view-2 .grid td");
+var $placeShip_td = $("section#view-2 div.grid div.grid_square");
 $placeShip_td.click(function(){
 	if(currentGame.selectedShipID == shipType.NONE){
 		return;

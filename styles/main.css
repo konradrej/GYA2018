@@ -323,22 +323,22 @@ section#view-2 div.wrapper div.column.grid div.game_grid div {
   align-items: center;
   background: white;
 }
-section#view-2 div.wrapper div.column.grid div.game_grid.size5 {
+section#view-2 div.wrapper div.column.grid div.game_grid.size-5 {
   grid-template-columns: repeat(6, 1fr);
 }
-section#view-2 div.wrapper div.column.grid div.game_grid.size6 {
+section#view-2 div.wrapper div.column.grid div.game_grid.size-6 {
   grid-template-columns: repeat(7, 1fr);
 }
-section#view-2 div.wrapper div.column.grid div.game_grid.size7 {
+section#view-2 div.wrapper div.column.grid div.game_grid.size-7 {
   grid-template-columns: repeat(8, 1fr);
 }
-section#view-2 div.wrapper div.column.grid div.game_grid.size8 {
+section#view-2 div.wrapper div.column.grid div.game_grid.size-8 {
   grid-template-columns: repeat(9, 1fr);
 }
-section#view-2 div.wrapper div.column.grid div.game_grid.size9 {
+section#view-2 div.wrapper div.column.grid div.game_grid.size-9 {
   grid-template-columns: repeat(10, 1fr);
 }
-section#view-2 div.wrapper div.column.grid div.game_grid.size10 {
+section#view-2 div.wrapper div.column.grid div.game_grid.size-10 {
   grid-template-columns: repeat(11, 1fr);
 }
 section#view-2 div.wrapper div.column.toolbar {
