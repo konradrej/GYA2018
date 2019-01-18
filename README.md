@@ -1,6 +1,6 @@
 # GYA2018
 
-GYA2018, a fairly simple one page game of battleships. Created as my "gymnasiearbete" which is a year long project in last year of high school. Written in HTML, CSS (Sass) and JS (including jQuery) might incorperate a bit of php and either a text file or a mysql database to make a game history.
+GYA2018, a fairly simple one page game of battleships. Created as my "gymnasiearbete" which is a year long project during the last year of high school in Sweden. Written in HTML, CSS (Sass) and JS (including jQuery) might incorperate a bit of php and either a text file or a mysql database to make a game history.
 
 ## Getting started
 ### Prerequisities
@@ -27,14 +27,14 @@ sass main.scss main.css
 
 ## Todo
 - View 2/3 transition
-- View 3 CSS/JS
+- View 3 JS
 - View 3/4 transition
 - View 4 design/HTML/CSS/JS
 - View 4/1 transition
 - Computer AI
 - Match stat saving
 - Local game history
-- (optional) remote game history
+- (optional) Remote game history
 
 ## License
 

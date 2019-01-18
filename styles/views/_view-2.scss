@@ -15,71 +15,82 @@ section#view-2 {
 		max-width: 1053px;
 		height: 100%;
 		display: flex;
-		justify-content: center;
-		align-items: center;
 		margin: auto;
 
 		div.column {
-			&.grid {
-				margin-right: 2rem;
-				width: calc(100vw - 6rem - 240px);
-				height: calc(100vw - 6rem - 240px);
-				max-width: 700px;
-				max-height: 700px;
-				min-width: 280px;
-				min-height: 280px;
-				user-select: none;
+			&.grid-container {
+				position: relative;
+				flex: 1;
 
-				div.game_grid {
+				div.grid {
+					user-select: none;
+					position: relative;
 					width: 100%;
-					height: 100%;
-					display: grid;
-					grid-gap: 1px;
-					background: black;
 
-					div {
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						background: white;
+					div.game_grid {
+						width: 100%;
+						height: 100%;
+						display: grid;
+						grid-gap: 1px;
+						background: black;
+						position: absolute;
+						box-sizing: border-box;
+						border: 1px solid black;
 
-						&.grid_guide {
+						div {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							background: white;
+							overflow: hidden;
 
+							&.grid_guide {
+
+							}
+
+							&.grid_square {
+								&[ishit=true] {
+									background: red;
+								}
+							}
 						}
 
-						&.grid_square {
+						&.size-5 {
+							grid-template-columns: repeat(6, 1fr);
+						}
 
+						&.size-6 {
+							grid-template-columns: repeat(7, 1fr);
+						}
+
+						&.size-7 {
+							grid-template-columns: repeat(8, 1fr);
+						}
+
+						&.size-8 {
+							grid-template-columns: repeat(9, 1fr);
+						}
+
+						&.size-9 {
+							grid-template-columns: repeat(10, 1fr);
+						}
+
+						&.size-10 {
+							grid-template-columns: repeat(11, 1fr);
 						}
 					}
 
-					&.size-5 {
-						grid-template-columns: repeat(6, 1fr);
-					}
-
-					&.size-6 {
-						grid-template-columns: repeat(7, 1fr);
-					}
-
-					&.size-7 {
-						grid-template-columns: repeat(8, 1fr);
-					}
-
-					&.size-8 {
-						grid-template-columns: repeat(9, 1fr);
-					}
-
-					&.size-9 {
-						grid-template-columns: repeat(10, 1fr);
-					}
-
-					&.size-10 {
-						grid-template-columns: repeat(11, 1fr);
+					&:after {
+						content: '';
+						display: block;
+						padding-bottom: 100%;
 					}
 				}
 			}
 
 			&.toolbar {
 				flex: 0 0 240px;
+				padding-left: 2rem;
 
 				h1 {
 					margin: 0 0 10px;
@@ -236,19 +247,13 @@ section#view-2 {
 					max-width: unset;
 					max-height: unset;
 					width: 100%;
-
-					table {
-						tr {
-							th, td {
-
-							}
-						}
-					}
 				}
 
 				&.toolbar {
 					width: 100%;
+					margin-top: 0.5rem;
 					margin-bottom: 2rem;
+					padding-left: 0;
 
 					h1 {
 						font-size: 1.9em;

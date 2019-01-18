@@ -55,6 +55,7 @@ class player {
 					}else{
 						gridSquare.setAttribute("data-row", y);
 						gridSquare.setAttribute("data-column", x);
+						gridSquare.setAttribute("data-isHit", this.grid[x][y]['isHit']);
 						gridSquare.setAttribute("class", "grid_square");
 					}
 				}
