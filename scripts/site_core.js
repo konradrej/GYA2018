@@ -46,3 +46,14 @@ $("form#view-1-form").submit(function(e){
 
 	return false;
 });
+
+//Dev mode to choose a specific view and generate necessary markup
+var devMode = true, devView = 3;
+if(devMode){
+	viewTransition(devView);
+
+	var currentGame, p1, p2;
+	currentGame = new game(10, "Dev");
+
+	currentGame.printBoard();
+}
