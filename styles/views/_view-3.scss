@@ -5,20 +5,7 @@ section#view-3 {
 	border-top: 1px solid transparent;
 	box-sizing: border-box;
 	padding: 2rem;
-	top: 0;
-	left: 0;
-
-
-
-
-	//position: absolute;
-	//z-index: 0;
-
-
-	//animation-name: view_load;
-	//animation-fill-mode: forwards;
-	//animation-duration: 1s;
-	//animation-delay: 5s;
+	display: none;
 
 	div.wrapper {
 		display: grid;
@@ -34,9 +21,9 @@ section#view-3 {
 				color: white;
 				text-shadow:
 					   -1px -1px 0 #000,
-					    1px -1px 0 #000,
-					    -1px 1px 0 #000,
-					     1px 1px 0 #000;
+						1px -1px 0 #000,
+						-1px 1px 0 #000,
+						 1px 1px 0 #000;
 			}
 
 			&.main {

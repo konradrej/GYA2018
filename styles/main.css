@@ -118,34 +118,11 @@ div#notifications-holder div.notification.success:hover {
     opacity: 1;
   }
 }
-@keyframes view_unload {
-  0% {
-    opacity: 1;
-    position: absolute;
-  }
-  100% {
-    opacity: 0;
-    position: fixed;
-  }
-}
-@keyframes view_load {
-  0% {
-    opacity: 0;
-    position: fixed;
-  }
-  100% {
-    opacity: 1;
-    position: absolute;
-  }
-}
 section#view-1 {
   width: 100%;
   height: auto;
   min-height: 100vh;
   text-align: center;
-  top: 0;
-  left: 0;
-  display: none;
 }
 section#view-1 div#landing {
   width: 100%;
@@ -283,14 +260,12 @@ section#view-1 div#stats div.container table.computer {
 
 section#view-2 {
   width: 100%;
+  min-height: 100vh;
   background: #0066cc;
   border-top: 1px solid transparent;
   box-sizing: border-box;
   padding: 2rem;
-  top: 0;
-  left: 0;
   display: none;
-  min-height: 100vh;
   height: auto;
 }
 section#view-2 div.wrapper {
@@ -471,8 +446,7 @@ section#view-3 {
   border-top: 1px solid transparent;
   box-sizing: border-box;
   padding: 2rem;
-  top: 0;
-  left: 0;
+  display: none;
 }
 section#view-3 div.wrapper {
   display: grid;

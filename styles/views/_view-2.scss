@@ -1,28 +1,15 @@
 section#view-2 {
 	width: 100%;
+	min-height: 100vh;
 	background: #0066cc;
 	border-top: 1px solid transparent;
 	box-sizing: border-box;
 	padding: 2rem;
-	top: 0;
-	left: 0;
-
 	display: none;
 
 	// problem: content disappers at extreme ratio 30/9
 	// solution: code below but introduces vertical align problem when grid is limited by width and not height
-	min-height: 100vh;
 	height: auto;
-
-
-	//position: absolute;
-	//z-index: 0;
-
-
-	//animation-name: view_load;
-	//animation-fill-mode: forwards;
-	//animation-duration: 1s;
-	//animation-delay: 5s;
 
 	div.wrapper {
 		max-width: 1053px;
@@ -102,9 +89,9 @@ section#view-2 {
 					color: white;
 					text-shadow:
 						   -1px -1px 0 #000,
-						    1px -1px 0 #000,
-						    -1px 1px 0 #000,
-						     1px 1px 0 #000;
+							1px -1px 0 #000,
+							-1px 1px 0 #000,
+							 1px 1px 0 #000;
 				}
 
 				div.container__ships {
@@ -118,7 +105,7 @@ section#view-2 {
 						margin: 0 0 5px;
 						border: 1px solid black;
 						box-sizing: border-box;
- 						transition: all 0.2s;
+						transition: all 0.2s;
 
 						h2 {
 							margin: 0 0 5px;

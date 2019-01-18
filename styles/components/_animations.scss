@@ -61,27 +61,3 @@
 		opacity: 1;
 	}
 }
-
-@keyframes view_unload {
-	0% {
-		opacity: 1;
-		position: absolute;
-	}
-
-	100% {
-		opacity: 0;
-		position: fixed;
-	}
-}
-
-@keyframes view_load {
-	0% {
-		opacity: 0;
-		position: fixed;
-	}
-
-	100% {
-		opacity: 1;
-		position: absolute;
-	}
-}

@@ -236,34 +236,36 @@ class game {
 	}
 }
 
-var p1, p2;
-var currentGame = new game(10);
-currentGame.printBoard();
 
+var currentGame, p1, p2;
+function startGame(size, playername){
+	currentGame = new game(size, playername);
 
-currentGame.selectedShipVertical = true;
+	currentGame.printBoard();
+	currentGame.selectedShipVertical = true;
 
-var $placeShip_Ships = $(".ship");
-$placeShip_Ships.click(function(){
-	$placeShip_Ships.removeClass("ship__active");
-	$(this).addClass("ship__active");
-	currentGame.selectedShipID = $(this).attr("data-ship-id");
-});
+	var $placeShipGridSquare = $("section#view-2 div.grid div.grid_square");
+	$placeShipGridSquare.click(function(){
+		if(currentGame.selectedShipID == shipType.NONE){
+			return;
+		}
 
-var $placeShip_td = $("section#view-2 div.grid div.grid_square");
-$placeShip_td.click(function(){
-	if(currentGame.selectedShipID == shipType.NONE){
-		return;
-	}
+		if(p1.createShip(currentGame.selectedShipID, currentGame.selectedShipVertical, $(this).attr('data-column'), $(this).attr('data-row'))){
+			$placeShipShipsContainer.removeClass("ship__active");
+			$(".ship[data-ship-id='"+currentGame.selectedShipID+"']").unbind('click').children("div.ship__container").attr("data-amount", "0");
+			currentGame.selectedShipID = shipType.NONE;
+		}
+	});
 
-	if(p1.createShip(currentGame.selectedShipID, currentGame.selectedShipVertical, $(this).attr('data-column'), $(this).attr('data-row'))){
-		$placeShip_Ships.removeClass("ship__active");
-		$(".ship[data-ship-id='"+currentGame.selectedShipID+"']").unbind('click').children("div.ship__container").attr("data-amount", "0");
-		currentGame.selectedShipID = shipType.NONE;
-	}
-});
+	var $placeShipShipsContainer = $(".ship");
+	$placeShipShipsContainer.click(function(){
+		$placeShipShipsContainer.removeClass("ship__active");
+		$(this).addClass("ship__active");
+		currentGame.selectedShipID = $(this).attr("data-ship-id");
+	});
 
-$("section#view-2 button.rotate").click(function(){
-	currentGame.selectedShipVertical = !currentGame.selectedShipVertical;
-	$(this).text(currentGame.selectedShipVertical ? "Vertikal": "Horisontell");
-});
+	$("section#view-2 button.rotate").click(function(){
+		currentGame.selectedShipVertical = !currentGame.selectedShipVertical;
+		$(this).text(currentGame.selectedShipVertical ? "Vertikal": "Horisontell");
+	});
+}
