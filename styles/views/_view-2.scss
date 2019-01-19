@@ -117,6 +117,7 @@ section#view-2 {
 						border: 1px solid black;
 						box-sizing: border-box;
 						transition: all 0.2s;
+						user-select: none;
 
 						h2 {
 							margin: 0 0 5px;

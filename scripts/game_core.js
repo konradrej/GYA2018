@@ -11,12 +11,16 @@ class player {
 	constructor(size, playername){
 		if(typeof playername == "undefined"){
 			playername = "Dator";
+			this.isPlayer = false;
+		}else{
+			this.isPlayer = true;
 		}
 
 		this.size = size;
 		this.score = 0;
 		this.playername = playername;
 		this.generateGrid(size);
+		this.shipsLeft = 5;
 	}
 
 	generateGrid(size){
@@ -57,6 +61,12 @@ class player {
 						gridSquare.setAttribute("data-column", x);
 						gridSquare.setAttribute("data-isHit", this.grid[x][y]['isHit']);
 						gridSquare.setAttribute("class", "grid_square");
+
+						if(this.isPlayer){
+							gridSquare.setAttribute("data-playergrid", "true");
+						}else{
+							gridSquare.setAttribute("data-playergrid", "false");
+						}
 					}
 				}
 
@@ -125,6 +135,7 @@ class player {
 		var isValid = this.validShipPosition(ship);
 		if(isValid.empty){
 			this.placeShip(ship, isValid.xPos, isValid.yPos);
+			this.shipsLeft--;
 
 			return true;
 		}else{
@@ -203,7 +214,7 @@ class player {
 		for(var i = 0; i < ship.length; i++){
 			this.grid[xPos[i]][yPos[i]]['isShip'] = ship.ID;
 
-			$("div.grid_square[data-column='"+xPos[i]+"'][data-row='"+yPos[i]+"']").css("background", ship.color);
+			$("div.grid_square[data-column='"+xPos[i]+"'][data-row='"+yPos[i]+"'][data-playergrid=true]").css("background", ship.color);					// specific which grid
 		}
 	}
 }
@@ -239,7 +250,7 @@ class game {
 
 
 var currentGame, p1, p2;
-function startGame(size, playername){
+function placeShips(size, playername){
 	currentGame = new game(size, playername);
 
 	currentGame.printBoard();

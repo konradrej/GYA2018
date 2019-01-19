@@ -34,6 +34,7 @@ function viewTransition(target){
 	currentView = target;
 }
 
+//view 1 to view 2
 $("form#view-1-form").submit(function(e){
 	e.preventDefault();
 
@@ -42,13 +43,30 @@ $("form#view-1-form").submit(function(e){
 	var size = $("input#view-1-gridsize").val();
 	var playername = $("input#view-1-playername").val();
 
-	startGame(size, playername);
+	placeShips(size, playername);
 
 	return false;
 });
 
+//view 2 to view 3
+$("button#view-2-start").click(function(){
+	if(p1.shipsLeft != 0){
+		sendNotification("Placera alla skepp innan du startar spelet.", "error");
+
+		return;
+	}
+
+	viewTransition(3);
+
+	$("span#view-3-playername").html(p1.playername);
+
+	return false;
+});
+
+
+
 //Dev mode to choose a specific view and generate necessary markup
-var devMode = true, devView = 3;
+var devMode = false, devView = 3;
 if(devMode){
 	viewTransition(devView);
 

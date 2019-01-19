@@ -26,7 +26,6 @@ sass main.scss main.css
 5. Profit
 
 ## Todo
-- View 2/3 transition
 - View 3 JS
 - View 3/4 transition
 - View 4 design/HTML/CSS/JS

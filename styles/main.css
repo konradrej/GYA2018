@@ -33,10 +33,11 @@ div#notifications-holder {
   left: 0;
   width: 100%;
   height: auto;
+  z-index: 99999;
 }
 div#notifications-holder div.notification {
-  border: 4px solid rgba(0, 0, 0, 0.5);
-  background: rgba(255, 255, 255, 0.5);
+  border: 4px solid rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   color: white;
   text-align: center;
@@ -44,26 +45,13 @@ div#notifications-holder div.notification {
   font-size: 1.4em;
   margin: 0 10px 10px;
   transition: all 0.2s;
-  cursor: pointer;
   user-select: none;
 }
-div#notifications-holder div.notification:hover {
-  border-color: rgba(0, 0, 0, 0.8);
-  background: rgba(255, 255, 255, 0.8);
-}
 div#notifications-holder div.notification.error {
-  border-color: rgba(100, 0, 0, 0.5);
-  background: rgba(255, 0, 0, 0.5);
-}
-div#notifications-holder div.notification.error:hover {
   border-color: rgba(100, 0, 0, 0.8);
   background: rgba(255, 0, 0, 0.8);
 }
 div#notifications-holder div.notification.success {
-  border-color: rgba(0, 100, 0, 0.5);
-  background: rgba(0, 255, 0, 0.5);
-}
-div#notifications-holder div.notification.success:hover {
   border-color: rgba(0, 100, 0, 0.8);
   background: rgba(0, 255, 0, 0.8);
 }
@@ -350,6 +338,7 @@ section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship {
   border: 1px solid black;
   box-sizing: border-box;
   transition: all 0.2s;
+  user-select: none;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship h2 {
   margin: 0 0 5px;
