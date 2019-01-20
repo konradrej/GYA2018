@@ -7,6 +7,7 @@ var shipType = {
 	NONE: 0
 };
 
+//this.shots = times firing, this.hits = times hitting a ship
 class player {
 	constructor(size, playername){
 		if(typeof playername == "undefined"){
@@ -17,7 +18,6 @@ class player {
 		}
 
 		this.size = size;
-		this.score = 0;
 		this.playername = playername;
 		this.generateGrid(size);
 		this.shipsLeft = 5;
@@ -244,6 +244,41 @@ class game {
 				document.getElementsByClassName("player-container")[0].appendChild(p1.generateGridHTML());
 				document.getElementsByClassName("enemy-container")[0].appendChild(p2.generateGridHTML());
 
+		}
+	}
+
+	saveMatchData(){
+		if(typeof(Storage) !== "undefined"){
+			var matches = [];
+
+			if(typeof(localStorage.matches) !== "undefined"){
+				matches = JSON.parse(localStorage.matches);
+			}
+
+			var match = {};
+
+			match.winner = currentGame.winner;
+			match.p1 = {
+				name: p1.playername,
+				shots: p1.shots,
+				hits: p1.hits,
+				hitpercent: p1.hits/p1.shots
+			};
+
+			match.p2 = {
+				name: p2.playername,
+				shots: p2.shots,
+				hits: p2.hits,
+				hitpercent: p2.hits/p2.shots
+			};
+
+			matches.push(match);
+
+			localStorage.matches = JSON.stringify(matches);
+		}else{
+			//Localstorage not available
+			//inform user
+			//infuture, offer to upload match stats
 		}
 	}
 }

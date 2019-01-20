@@ -147,10 +147,10 @@ section#view-1 div#landing form label span:after {
   content: ":";
   display: inline;
 }
-section#view-1 div#landing form label input#grid-size {
+section#view-1 div#landing form label input#view-1-gridsize {
   width: 2.5em;
 }
-section#view-1 div#landing form label input#player-name {
+section#view-1 div#landing form label input#view-1-playername {
   width: 10em;
 }
 section#view-1 div#landing form button {
@@ -217,33 +217,38 @@ section#view-1 div#stats div.container {
   box-sizing: border-box;
   background: white;
   box-shadow: 0 0 5px black;
+  display: grid;
+  text-align: center;
 }
-section#view-1 div#stats div.container table {
-  background: white;
-  width: 100%;
-  border-bottom: 1px solid black;
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-section#view-1 div#stats div.container table tr {
-  width: 100%;
-}
-section#view-1 div#stats div.container table tr.header th {
-  border: 1px solid black;
-}
-section#view-1 div#stats div.container table tr.header th h3 {
+section#view-1 div#stats div.container div.match div.match--id h3 {
   margin: 0.5em;
 }
-section#view-1 div#stats div.container table tr.name th, section#view-1 div#stats div.container table tr.name td, section#view-1 div#stats div.container table tr.accuracy th, section#view-1 div#stats div.container table tr.accuracy td {
-  padding: 0.25em 0 0.25em;
-  border: 1px solid black;
-  vertical-align: middle;
+section#view-1 div#stats div.container div.match div.match--stats {
+  display: grid;
+  grid-template-columns: minmax(95px, 1fr) 1fr 1fr;
+  grid-gap: 1px;
+  background: black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
-section#view-1 div#stats div.container table.player {
+section#view-1 div#stats div.container div.match div.match--stats div {
+  padding: 0.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+section#view-1 div#stats div.container div.match.player_1 div.match--stats div.player_1 {
   background: #4cff4c;
 }
-section#view-1 div#stats div.container table.computer {
+section#view-1 div#stats div.container div.match.player_1 div.match--stats div.player_2 {
   background: #ff4c4c;
+}
+section#view-1 div#stats div.container div.match.player_2 div.match--stats div.player_1 {
+  background: #ff4c4c;
+}
+section#view-1 div#stats div.container div.match.player_2 div.match--stats div.player_2 {
+  background: #4cff4c;
 }
 
 section#view-2 {

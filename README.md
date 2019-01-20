@@ -1,4 +1,4 @@
-# GYA2018
+# GYA2018 ![](https://img.shields.io/github/last-commit/Sventastical/GYA2018.svg) ![](https://img.shields.io/github/repo-size/Sventastical/GYA2018.svg)
 
 GYA2018, a fairly simple one page game of battleships. Created as my "gymnasiearbete" which is a year long project during the last year of high school in Sweden. Written in HTML, CSS (Sass) and JS (including jQuery) might incorperate a bit of php and either a text file or a mysql database to make a game history.
 

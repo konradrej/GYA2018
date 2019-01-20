@@ -63,6 +63,33 @@ $("button#view-2-start").click(function(){
 	return false;
 });
 
+if(typeof(Storage) !== "undefined" && typeof(localStorage.matches) !== "undefined"){
+	var matches = JSON.parse(localStorage.matches);
+	var $container = $("div#stats div.container");
+
+	for(var i = 0; i < matches.length; i++){
+		var match = '<div class="match '+matches[i].winner+'"><div class="match--id"><h3>Match #'+(i+1)+'</h3></div><div class="match--stats"><div class="static">Namn</div><div class="name player_1">'+matches[i].p1.name+'</div><div class="name player_2">'+matches[i].p2.name+'</div><div class="static">Träffar (%)</div><div class="accuracy player_1">'+matches[i].p1.hitprocent+'</div><div class="accuracy player_2">'+matches[i].p2.hitprocent+'</div></div></div>';
+
+		$container.empty();
+		$container.prepend(match);
+	}
+}else{
+	//local data/storage doesnt exists
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Dev mode to choose a specific view and generate necessary markup
