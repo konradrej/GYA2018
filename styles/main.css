@@ -280,11 +280,11 @@ section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-gap: 1px;
   background: black;
   position: absolute;
   box-sizing: border-box;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
 }
 section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid div {
   display: flex;
@@ -292,6 +292,8 @@ section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid div 
   align-items: center;
   background: white;
   overflow: hidden;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
 }
 section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid div.grid_square[ishit=true] {
   background: red;
@@ -477,11 +479,11 @@ section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-gap: 1px;
   background: black;
   position: absolute;
   box-sizing: border-box;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
 }
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div {
   display: flex;
@@ -489,6 +491,8 @@ section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div
   align-items: center;
   background: white;
   overflow: hidden;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
 }
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square[data-ishit=true] {
   background: red;
@@ -525,11 +529,11 @@ section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid
   width: 100%;
   height: 100%;
   display: grid;
-  grid-gap: 1px;
   background: black;
   position: absolute;
   box-sizing: border-box;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div {
   display: flex;
@@ -537,6 +541,8 @@ section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid
   align-items: center;
   background: white;
   overflow: hidden;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[ishit=true] {
   background: red;
@@ -597,6 +603,37 @@ section#view-3 div.wrapper div.column.sidebar div.past-actions:after {
   section#view-3 div.wrapper {
     grid-template-columns: auto;
   }
+}
+section#view-4 {
+  width: 400px;
+  height: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1.5em;
+  text-align: center;
+  display: none;
+}
+section#view-4 div.match div.match--id h3 {
+  margin: 0.5em;
+}
+section#view-4 div.match div.match--stats {
+  display: grid;
+  grid-template-columns: minmax(95px, 1fr) 1fr 1fr;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+section#view-4 div.match div.match--stats div {
+  padding: 0.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -283,7 +283,6 @@ class game {
 	}
 }
 
-
 var currentGame, p1, p2;
 function placeShips(size, playername){
 	currentGame = new game(size, playername);
