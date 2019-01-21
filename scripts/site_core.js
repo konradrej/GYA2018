@@ -27,6 +27,10 @@ function sendNotification(message, type){
 
 var currentView = 1;
 function viewTransition(target){
+	$('html,body').animate({
+		scrollTop: 0
+	}, 500);
+
 	$("#view-"+currentView).fadeOut(500, function(){
 		$("#view-"+target).fadeIn(500);
 	});
