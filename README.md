@@ -28,10 +28,6 @@ sass main.scss main.css
 ## Todo
 - View 3 JS
 - Computer AI
-- Gameover notification
-- View 3/4 transition
-- View 4 design/HTML/CSS/JS
-- View 4/1 transition
 - (optional) Remote game history
 
 ## License

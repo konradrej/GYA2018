@@ -1,14 +1,18 @@
 section#view-4 {
-	width: 400px;
-	height: auto;
-	position: fixed;
-	top: 50%;
+	min-width: 350px;
+	max-width: 500px;
+	width: 100%;
+	height: 223px;
+	box-sizing: border-box;
+	position: absolute;
+	top: 40vh;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	border: 1px solid black;
-	background: rgba(255, 255, 255, 0.8);
-	padding: 1.5em;
+	background: rgba(255, 255, 255, 0.9);
 	text-align: center;
+	padding: 1.5rem;
+	padding-top: 0;
 	display: none;
 
 	h2 {
@@ -16,12 +20,6 @@ section#view-4 {
 	}
 
 	div.match {
-		div.match--id {
-			h3 {
-				margin: 0.5em;
-			}
-		}
-
 		div.match--stats {
 			display: grid;
 			grid-template-columns: minmax(95px, 1fr) 1fr 1fr;
@@ -33,13 +31,12 @@ section#view-4 {
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				background: white;
 				border-top: 1px solid black;
 				border-left: 1px solid black;
 			}
 
 			div.static {
-
+				font-weight: bold;
 			}
 
 			div.name {
@@ -62,18 +59,22 @@ section#view-4 {
 
 	form {
 		label {
-			input#submit-stats {
+			display: block;
+			padding: 0.5rem;
 
+			input#submit-stats {
+				vertical-align: middle;
 			}
 		}
 
-		button#submit-play-again {
+		button#continue {
 
 		}
+	}
 
-		button#player-again {
-
-		}
+	button#play-again {
+		margin-top: 1.8rem;
+		display: none;
 	}
 }
 
@@ -87,4 +88,13 @@ section#view-4 {
 
 @mixin view-4__phone(){
 	
+}
+
+@media (max-width: 450px) {
+	section#view-4 {
+		padding-left: 0;
+		padding-right: 0;
+		transform: translateY(-50%);
+		left: 0;
+	}
 }
