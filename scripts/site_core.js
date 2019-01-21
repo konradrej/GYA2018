@@ -67,6 +67,52 @@ $("button#view-2-start").click(function(){
 	return false;
 });
 
+//view 3 to view 4
+function gameOver(){
+	if(currentGame.winner == "player_1"){
+		$("#view-4 h2").html("Grattis "+p1.playername+", du vann!");
+	}else if(currentGame.winner == "player_2"){
+		$("#view-4 h2").html("Bättre lycka nästa gång!");
+	}else{
+		//error, no winner yet
+		alert("error, winner");
+	}
+
+	$("div.name.player_1").html(p1.playername);
+	$("div.name.player_2").html(p2.playername);
+	$("div.accuracy.player_1").html(Math.round(p1.hits/p1.shots*100));
+	$("div.accuracy.player_2").html(Math.round(p2.hits/p2.shots*100));
+
+	$("#view-4").fadeIn(500);
+}
+
+$("form#view-4-form").submit(function(e){
+	e.preventDefault();
+
+	if($("#submit-stats").prop("checked")){
+		currentGame.saveMatchData();
+	}
+
+	$("form#view-4-form").fadeOut(500, function(){
+		$("#play-again").fadeIn(500);
+	});
+
+	return false;
+});
+
+//view 4 to view 1
+$("#play-again").click(function(){
+	currentGame = null;
+
+	$("#view-4").fadeOut(500);
+	viewTransition(1);
+
+	//reset
+	$("#play-again").fadeOut(500, function(){
+		$("form#view-4-form").fadeIn(500);
+	});
+});
+
 if(typeof(Storage) !== "undefined" && typeof(localStorage.matches) !== "undefined"){
 	var matches = JSON.parse(localStorage.matches);
 	var $container = $("div#stats div.container");
