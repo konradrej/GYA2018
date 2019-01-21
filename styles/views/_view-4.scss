@@ -1,5 +1,80 @@
 section#view-4 {
+	width: 400px;
+	height: auto;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid black;
+	background: rgba(255, 255, 255, 0.8);
+	padding: 1.5em;
+	text-align: center;
+	display: none;
 
+	h2 {
+
+	}
+
+	div.match {
+		div.match--id {
+			h3 {
+				margin: 0.5em;
+			}
+		}
+
+		div.match--stats {
+			display: grid;
+			grid-template-columns: minmax(95px, 1fr) 1fr 1fr;
+			border-bottom: 1px solid black;
+			border-right: 1px solid black;
+
+			div {
+				padding: 0.25em;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: white;
+				border-top: 1px solid black;
+				border-left: 1px solid black;
+			}
+
+			div.static {
+
+			}
+
+			div.name {
+
+			}
+
+			div.accuracy {
+
+			}
+
+			div.player_1 {
+
+			}
+
+			div.player_2 {
+
+			}
+		}
+	}
+
+	form {
+		label {
+			input#submit-stats {
+
+			}
+		}
+
+		button#submit-play-again {
+
+		}
+
+		button#player-again {
+
+		}
+	}
 }
 
 @mixin view-4__desktop(){

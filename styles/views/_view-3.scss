@@ -38,11 +38,11 @@ section#view-3 {
 						width: 100%;
 						height: 100%;
 						display: grid;
-						grid-gap: 1px;
 						background: black;
 						position: absolute;
 						box-sizing: border-box;
-						border: 1px solid black;
+						border-bottom: 1px solid black;
+						border-right: 1px solid black;
 
 						div {
 							display: flex;
@@ -50,6 +50,8 @@ section#view-3 {
 							align-items: center;
 							background: white;
 							overflow: hidden;
+							border-top: 1px solid black;
+							border-left: 1px solid black;
 
 							&.grid_guide {
 
@@ -105,11 +107,11 @@ section#view-3 {
 						width: 100%;
 						height: 100%;
 						display: grid;
-						grid-gap: 1px;
 						background: black;
 						position: absolute;
 						box-sizing: border-box;
-						border: 1px solid black;
+						border-bottom: 1px solid black;
+						border-right: 1px solid black;
 
 						div {
 							display: flex;
@@ -117,6 +119,8 @@ section#view-3 {
 							align-items: center;
 							background: white;
 							overflow: hidden;
+							border-top: 1px solid black;
+							border-left: 1px solid black;
 
 							&.grid_guide {
 
