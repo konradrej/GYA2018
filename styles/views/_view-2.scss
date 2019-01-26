@@ -51,9 +51,7 @@ section#view-2 {
 							}
 
 							&.grid_square {
-								&[ishit=true] {
-									background: red;
-								}
+
 							}
 						}
 
@@ -135,31 +133,31 @@ section#view-2 {
 
 							&.ship__carrier {
 								div.ship__block {
-									background: cyan;
+									background: purple;
 								}
 							}
 
 							&.ship__battleship {
 								div.ship__block {
-									background: green;
+									background: lightblue;
 								}
 							}
 
 							&.ship__cruiser {
 								div.ship__block {
-									background: yellow;
+									background: green;
 								}
 							}
 
 							&.ship__submarine {
 								div.ship__block {
-									background: orange;
+									background: yellow;
 								}
 							}
 
 							&.ship__destroyer {
 								div.ship__block {
-									background: red;
+									background: orange;
 								}
 							}
 						}

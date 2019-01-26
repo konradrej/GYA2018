@@ -298,9 +298,6 @@ section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid div 
   border-top: 1px solid black;
   border-left: 1px solid black;
 }
-section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid div.grid_square[ishit=true] {
-  background: red;
-}
 section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid.size-5 {
   grid-template-columns: repeat(6, 1fr);
 }
@@ -360,19 +357,19 @@ section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.
   display: inline;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__container.ship__carrier div.ship__block {
-  background: cyan;
+  background: purple;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__container.ship__battleship div.ship__block {
-  background: green;
+  background: lightblue;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__container.ship__cruiser div.ship__block {
-  background: yellow;
+  background: green;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__container.ship__submarine div.ship__block {
-  background: orange;
+  background: yellow;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__container.ship__destroyer div.ship__block {
-  background: red;
+  background: orange;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship div.ship__block {
   width: 30px;
@@ -497,8 +494,35 @@ section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div
   border-top: 1px solid black;
   border-left: 1px solid black;
 }
-section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square[data-ishit=true] {
+section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square {
+  position: relative;
+}
+section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square[data-isHit=true]:before {
   background: red;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square[data-isShip="5"] {
+  background: purple;
+}
+section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square[data-isShip="4"] {
+  background: lightblue;
+}
+section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square[data-isShip="3"] {
+  background: green;
+}
+section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square[data-isShip="2"] {
+  background: yellow;
+}
+section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square[data-isShip="1"] {
+  background: orange;
 }
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid.size-5 {
   grid-template-columns: repeat(6, 1fr);
@@ -547,8 +571,38 @@ section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid
   border-top: 1px solid black;
   border-left: 1px solid black;
 }
-section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[ishit=true] {
+section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square {
+  position: relative;
+}
+section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isHit=true]:before {
   background: red;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isHit=true]:hover:before {
+  opacity: 0.5;
+}
+section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isShip="5"] {
+  background: purple;
+}
+section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isShip="4"] {
+  background: lightblue;
+}
+section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isShip="3"] {
+  background: green;
+}
+section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isShip="2"] {
+  background: yellow;
+}
+section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isShip="1"] {
+  background: orange;
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid.size-5 {
   grid-template-columns: repeat(6, 1fr);

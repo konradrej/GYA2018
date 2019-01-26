@@ -60,9 +60,10 @@ $("button#view-2-start").click(function(){
 		return;
 	}
 
+	currentGame.printBoard();
 	viewTransition(3);
-
 	$("span#view-3-playername").html(p1.playername);
+	gameLoop();
 
 	return false;
 });
@@ -123,10 +124,7 @@ if(typeof(Storage) !== "undefined" && typeof(localStorage.matches) !== "undefine
 		$container.empty();
 		$container.prepend(match);
 	}
-}else{
-	//local data/storage doesnt exists
 }
-
 
 
 

@@ -7,7 +7,47 @@ var shipType = {
 	NONE: 0
 };
 
-//this.shots = times firing, this.hits = times hitting a ship
+class ai {
+	constructor(){
+
+	}
+
+	generateRandomNumber(min, max, availableNumbers){
+		if(typeof availableNumbers === "undefined"){
+			return Math.round(Math.random() * (max-min) + min);
+		}else{
+			var number;
+
+			do {
+				number = Math.round(Math.random() * (max-min) + min);
+			}while(!availableNumbers.includes(number));
+
+			return number;
+		}
+	}
+
+	placeShips(){
+		var availableShips = [shipType.CARRIER, shipType.BATTLESHIP, shipType.CRUISER, shipType.SUBMARINE, shipType.DESTROYER];
+
+		while(availableShips.length != 0){
+			var currentSelectedShip = availableShips[0];
+
+			var created = false;
+			do {
+				if(p2.createShip(
+								currentSelectedShip,
+								this.generateRandomNumber(0, 1),
+								this.generateRandomNumber(0, p2.size-1),
+								this.generateRandomNumber(0, p2.size-1)
+				)){
+					availableShips.shift();
+					created = true;
+				}
+			}while(!created);
+		}
+	}
+}
+
 class player {
 	constructor(size, playername){
 		if(typeof playername == "undefined"){
@@ -21,6 +61,13 @@ class player {
 		this.playername = playername;
 		this.generateGrid(size);
 		this.shipsLeft = 5;
+		this.ships = {
+			CARRIER: 5,
+			BATTLESHIP: 4,
+			CRUISER: 3,
+			SUBMARINE: 3,
+			DESTROYER: 2
+		};
 	}
 
 	generateGrid(size){
@@ -35,7 +82,7 @@ class player {
 		}
 	}
 
-	generateGridHTML(){
+	generateGridHTML(showShips){
 		this.gridHTML = document.createElement("div");
 		this.gridHTML.setAttribute("class", "game_grid size-"+this.size);
 
@@ -59,6 +106,11 @@ class player {
 					}else{
 						gridSquare.setAttribute("data-row", y);
 						gridSquare.setAttribute("data-column", x);
+						
+						if(showShips){
+							gridSquare.setAttribute("data-isShip", this.grid[x][y]['isShip']);
+						}
+
 						gridSquare.setAttribute("data-isHit", this.grid[x][y]['isHit']);
 						gridSquare.setAttribute("class", "grid_square");
 
@@ -77,29 +129,52 @@ class player {
 		return this.gridHTML;
 	}
 
-	printHTML(container){
-		document.getElementsByClassName(container)[0].appendChild(generateGridHTML());
+	printHTML(container, showShips){
+		if(typeof showShips === "undefined") {
+			showShips = false;
+		}
+
+		document.getElementsByClassName(container)[0].appendChild(generateGridHTML(showShips));
 	}
 
-	// RETURNS FALSE IF IS ALREADY HIT
-	// RETURNS TRUE IF
+	//this.shots = times firing, this.hits = times hitting a ship 								// FIX
+	checkTileHit(x, y){
+		if(!this.grid[x][y]['isHit']){
+			switch(this.grid[x][y]['isShip']){
+				case shipType.CARRRIER:
+					this.ships.CARRRIER--;
+					break;
+				case shipType.BATTLESHIP:
+					this.ships.BATTLESHIP--;
+					break;
+				case shipType.CRUISER:
+					this.ships.CRUISER--;
+					break;
+				case shipType.SUBMARINE:
+					this.ships.SUBMARINE--;
+					break;
+				case shipType.DESTROYER:
+					this.ships.DESTROYER--;
+					break;
+				default:
+					//empty
+			}
 
-	// CREATE CHECKTILE AND ISHIT FUNCTIONS
-	// CHECKTILE RETURNS TRUE IF IT ISNT HIT AND FALSE IF IT ALREADY IS HIT
-	// ISHIT RETURNS TRUE IF A SHIP IS HIT ON TILE AND FLASE IF IT DIDNT HIT A SHIP
+			this.grid[x][y]['isHit'] = true;
 
-	//hitTile
-	// if its already hit, return false
-	// if it isnt hit, return true and mark hit and check if its a ship or not
-	// if it is a ship, check if sunk
+			if(this.isPlayer){
+				$("player-container div.grid_square[data-column='"+x+"'][data-row='"+y+"']").attr("data-isHit", "true");
+			}else{
+				$("enemy-container div.grid_square[data-column='"+x+"'][data-row='"+y+"']").attr("data-isHit", "true");
+			}
 
+			return true;
+		}
 
+		//already hit
+		return false;
+	}
 
-
-
-
-
-	//error ifall rutan är upptagen (kanske annat error ifall hamnar utanför)
 	createShip(shipTypeID, isVertical, x, y){
 		var ship = {};
 			ship.ID = parseInt(shipTypeID);
@@ -110,23 +185,23 @@ class player {
 		switch(ship.ID){
 			case shipType.CARRIER:
 				ship.length = 5;
-				ship.color = "lightblue";
+				ship.color = "purple";
 				break;
 			case shipType.BATTLESHIP:
 				ship.length = 4;
-				ship.color = "green";
+				ship.color = "lightblue";
 				break;
 			case shipType.CRUISER:
 				ship.length = 3;
-				ship.color = "yellow";
+				ship.color = "green";
 				break;
 			case shipType.SUBMARINE:
 				ship.length = 3;
-				ship.color = "orange";
+				ship.color = "yellow";
 				break;
 			case shipType.DESTROYER:
 				ship.length = 2;
-				ship.color = "red";
+				ship.color = "orange";
 				break;
 			default:
 				return false;
@@ -139,14 +214,15 @@ class player {
 
 			return true;
 		}else{
-			// isValid.x, isValid.y is not available
-			switch(isValid.reason){
-				case 'ship':
-					sendNotification('Skeppen kan inte placeras på varandra.', 'error');
-					break;
-				case 'outside':
-					sendNotification('Placera skeppet inom spelplanen.', 'error');
-					break;
+			if(this.isPlayer){
+				switch(isValid.reason){
+					case 'ship':
+						sendNotification('Skeppen kan inte placeras på varandra.', 'error');
+						break;
+					case 'outside':
+						sendNotification('Placera skeppet inom spelplanen.', 'error');
+						break;
+				}
 			}
 
 			return false;
@@ -214,7 +290,9 @@ class player {
 		for(var i = 0; i < ship.length; i++){
 			this.grid[xPos[i]][yPos[i]]['isShip'] = ship.ID;
 
-			$("div.grid_square[data-column='"+xPos[i]+"'][data-row='"+yPos[i]+"'][data-playergrid=true]").css("background", ship.color);					// specific which grid
+			if(this.isPlayer){
+				$("section#view-2 div.grid_square[data-column='"+xPos[i]+"'][data-row='"+yPos[i]+"'][data-playergrid=true]").css("background", ship.color);
+			}
 		}
 	}
 }
@@ -227,23 +305,12 @@ class game {
 		this.selectedShipID = shipType.NONE;
 	}
 
-	printBoard(player){
-		switch(player){
-			case "one":
-			case 1:
-				document.getElementsByClassName("player_one")[0].appendChild(p1.generateGridHTML());
-
-				break;
-			case "two":
-			case 2:
-				document.getElementsByClassName("player_two")[0].appendChild(p2.generateGridHTML());
-
-				break;
-			default:
-				document.getElementsByClassName("grid")[0].appendChild(p1.generateGridHTML());
-				document.getElementsByClassName("player-container")[0].appendChild(p1.generateGridHTML());
-				document.getElementsByClassName("enemy-container")[0].appendChild(p2.generateGridHTML());
-
+	printBoard(shipPlacing){
+		if(shipPlacing){
+			$("section#view-2 div.grid").append(p1.generateGridHTML());
+		}else{
+			$("section#view-3 div.player-container").append(p1.generateGridHTML(true));
+			$("section#view-3 div.enemy-container").append(p2.generateGridHTML(false));
 		}
 	}
 
@@ -287,7 +354,7 @@ var currentGame, p1, p2;
 function placeShips(size, playername){
 	currentGame = new game(size, playername);
 
-	currentGame.printBoard();
+	currentGame.printBoard(true);
 	currentGame.selectedShipVertical = true;
 
 	var $placeShipGridSquare = $("section#view-2 div.grid div.grid_square");
@@ -314,4 +381,14 @@ function placeShips(size, playername){
 		currentGame.selectedShipVertical = !currentGame.selectedShipVertical;
 		$(this).text(currentGame.selectedShipVertical ? "Vertikal": "Horisontell");
 	});
+}
+
+function gameLoop(){
+	var playing = true;
+	var computerAI = new ai();
+	computerAI.placeShips();
+
+	while(playing){
+		playing = false;
+	}
 }
