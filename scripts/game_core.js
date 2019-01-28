@@ -217,8 +217,16 @@ class player {
 
 			if(this.isPlayer){
 				$(".player-container div.grid_square[data-column='"+x+"'][data-row='"+y+"']").attr("data-isHit", "true");
+
+				if(didHit){
+					$(".player-container div.grid_square[data-column='"+x+"'][data-row='"+y+"']").attr("data-isShip", "true");
+				}
 			}else{
 				$(".enemy-container div.grid_square[data-column='"+x+"'][data-row='"+y+"']").attr("data-isHit", "true");
+
+				if(didHit){
+					$(".enemy-container div.grid_square[data-column='"+x+"'][data-row='"+y+"']").attr("data-isShip", "true");
+				}
 			}
 
 			if(this.isPlayer){
@@ -510,8 +518,6 @@ function checkGameOver(){
 
 
 
-//validate user input before changing to view-2
 //action box js
-//2 differnet colors if it hit boat
 //inform about sinking a ship
 //delay computer actions

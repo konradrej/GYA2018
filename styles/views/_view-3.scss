@@ -75,6 +75,12 @@ section#view-3 {
 									}
 								}
 								
+								&[data-isShip="true"] {
+									&:before {
+										background: blue;
+									}
+								}
+								
 								&[data-isShip="5"] {
 									background: purple;
 								}
@@ -179,6 +185,12 @@ section#view-3 {
 
 									&:hover:before {
 										opacity: 0.5;
+									}
+								}
+								
+								&[data-isShip="true"] {
+									&:before {
+										background: blue;
 									}
 								}
 								

@@ -42,12 +42,19 @@ function viewTransition(target){
 $("form#view-1-form").submit(function(e){
 	e.preventDefault();
 
-	viewTransition(2);
+	var size = $("input#view-1-gridsize").val(),
+		playername = $("input#view-1-playername").val();
 
-	var size = $("input#view-1-gridsize").val();
-	var playername = $("input#view-1-playername").val();
-
-	placeShips(size, playername);
+	if(size > 10 || size < 5 || size == ""){
+		sendNotification("Var snäll och fyll in en siffra mellan 5 och 10 i forumläret.", "error");
+	}else{
+		if(playername == ""){
+			sendNotification("Var snäll och fyll in ett namn i formuläret.", "error");
+		}else{
+			viewTransition(2);
+			placeShips(size, playername);
+		}
+	}
 
 	return false;
 });
@@ -114,40 +121,15 @@ $("#play-again").click(function(){
 if(typeof(Storage) !== "undefined" && typeof(localStorage.matches) !== "undefined"){
 	var matches = JSON.parse(localStorage.matches);
 	var $container = $("div#stats div.container");
-
-	console.log(matches);
+	$container.empty();
 
 	for(var i = 0; i < matches.length; i++){
 		var match = '<div class="match '+matches[i].winner+'"><div class="match--id"><h3>Match #'+(i+1)+'</h3></div><div class="match--stats"><div class="static">Namn</div><div class="name player_1">'+matches[i].p1.name+'</div><div class="name player_2">'+matches[i].p2.name+'</div><div class="static">Träffar (%)</div><div class="accuracy player_1">'+Math.round((matches[i].p1.hitpercent*100))+'</div><div class="accuracy player_2">'+Math.round((matches[i].p2.hitpercent*100))+'</div></div></div>';
 
-		$container.empty();
 		$container.prepend(match);
 	}
 }
 
-
-
-
-
 $('html,body').animate({
 	scrollTop: 0
 }, 500);
-
-
-
-
-
-
-
-
-
-//Dev mode to choose a specific view and generate necessary markup
-var devMode = false, devView = 3;
-if(devMode){
-	viewTransition(devView);
-
-	var currentGame, p1, p2;
-	currentGame = new game(10, "Dev");
-
-	currentGame.printBoard();
-}

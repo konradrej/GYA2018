@@ -217,7 +217,6 @@ section#view-1 div#stats div.container {
   box-sizing: border-box;
   background: white;
   box-shadow: 0 0 5px black;
-  display: grid;
   text-align: center;
 }
 section#view-1 div#stats div.container div.match div.match--id h3 {
@@ -509,6 +508,9 @@ section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div
   opacity: 1;
   transition: opacity 0.2s;
 }
+section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square[data-isShip=true]:before {
+  background: blue;
+}
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square[data-isShip="5"] {
   background: purple;
 }
@@ -588,6 +590,9 @@ section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isHit=true]:hover:before {
   opacity: 0.5;
+}
+section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isShip=true]:before {
+  background: blue;
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isShip="5"] {
   background: purple;
