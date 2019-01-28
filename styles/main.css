@@ -588,9 +588,6 @@ section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid
   opacity: 1;
   transition: opacity 0.2s;
 }
-section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isHit=true]:hover:before {
-  opacity: 0.5;
-}
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isShip=true]:before {
   background: blue;
 }

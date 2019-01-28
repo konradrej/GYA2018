@@ -58,8 +58,10 @@ class ai {
 		}while(result.wasHit);
 
 		if(result.shipHit){
+			currentGame.printAction(p2.playername+" prickade ett skepp.");
 			return true;
 		}else{
+			currentGame.printAction(p2.playername+" missade.");
 			return false;
 		}
 	}
@@ -68,14 +70,12 @@ class ai {
 		var shipHit = false;
 
 		do {
-			setTimeout(function(){
-				shipHit = this.guessSquare();
+			shipHit = this.guessSquare();
 
-				if(p1.ships.amount == 0){
-					checkGameOver();
-					break;
-				}
-			}, 1000);
+			if(p1.ships.amount == 0){
+				checkGameOver();
+				break;
+			}
 		}while(shipHit);
 	}
 }
@@ -122,14 +122,14 @@ class player {
 		this.gridHTML = document.createElement("div");
 		this.gridHTML.setAttribute("class", "game_grid size-"+this.size);
 
-		var guide = 'ABCDEFGHIJ';
+		this.guide = 'ABCDEFGHIJ';
 		for(var y = -1; y < this.grid.length; y++){
 			for(var x = -1; x < this.grid[0].length; x++){
 				var gridSquare = document.createElement("div");
 
 				if(y == -1){
 					if(x != -1){
-						gridSquare.innerHTML = guide.charAt(x);
+						gridSquare.innerHTML = this.guide.charAt(x);
 						gridSquare.setAttribute("data-column", x);
 					}
 
@@ -427,6 +427,20 @@ class game {
 			//infuture, offer to upload match stats
 		}
 	}
+
+	getCurrentTime(){
+		var currentDate = new Date();
+		var difference = (currentDate.getTime() - this.timeStart.getTime()) / 1000;
+
+		var date = new Date(null);
+		date.setSeconds(difference);
+		return date.toISOString().substr(14, 5);
+	}
+
+	printAction(message){
+		$("section#view-3 div.actions-wrapper").append("<div><span class='time'>"+this.getCurrentTime()+"</span><span class='message'>"+message+"</span></div>");
+		$("section#view-3 div.actions-wrapper").scrollTop($("section#view-3 div.actions-wrapper").prop("scrollHeight"));
+	}
 }
 
 var currentGame, p1, p2;
@@ -464,8 +478,12 @@ function placeShips(size, playername){
 
 function gameLoop(){
 	currentGame.playing = true;
+	currentGame.timeStart = new Date();
 	p2.ai = new ai();
 	p2.ai.placeShips();
+
+	$("section#view-3 div.actions-wrapper").append("<div><span class='time'>--:--</span><span class='message'>"+p1.playername+" placerade sina skepp.</span></div>");
+	$("section#view-3 div.actions-wrapper").append("<div><span class='time'>--:--</span><span class='message'>"+p2.playername+" placerade sina skepp.</span></div>");
 
 	currentGame.isAiTurn = !(Math.random()+.5|0);
 	if(currentGame.isAiTurn){
@@ -477,21 +495,26 @@ function gameLoop(){
 		if($(this).attr("data-isHit") == "true"){
 			return;
 		}else{
-			checkGameOver();
 			if(!currentGame.isAiTurn){
 				var x = $(this).attr("data-column"),
 					y = $(this).attr("data-row");
 
+				currentGame.printAction(p1.playername+" attackerade "+p1.guide.charAt(x)+(y+1));
+
 				var result = p2.checkTileHit(x, y);
 				if(result.shipHit){
 					currentGame.isAiTurn = false;
+					currentGame.printAction(p1.playername+" prickade ett skepp.");
 				}else{
 					currentGame.isAiTurn = true;
+					currentGame.printAction(p1.playername+" missade.");
 					p2.ai.playSquare();
 					currentGame.isAiTurn = false;
 				}
 			}
 		}
+
+		checkGameOver();
 	});
 }
 
@@ -502,8 +525,10 @@ function checkGameOver(){
 
 		if(p1.ships.amount == 0){
 			currentGame.winner = "player_2";
+			currentGame.printAction(p2.playername+" vann.");
 		}else if(p2.ships.amount == 0){
 			currentGame.winner = "player_1";
+			currentGame.printAction(p1.playername+" vann.");
 		}
 
 		gameOver();
@@ -513,13 +538,4 @@ function checkGameOver(){
 	return false;
 }
 
-
-
-
-
-
-
-
-//action box js
 //inform about sinking a ship
-//delay computer actions

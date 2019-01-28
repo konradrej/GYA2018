@@ -26,7 +26,6 @@ sass main.scss main.css
 5. Profit
 
 ## Todo
-- View 3 JS
 - (optional) Remote game history
 
 ## License

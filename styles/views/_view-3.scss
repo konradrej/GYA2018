@@ -182,10 +182,6 @@ section#view-3 {
 										opacity: 1;
 										transition: opacity 0.2s;
 									}
-
-									&:hover:before {
-										opacity: 0.5;
-									}
 								}
 								
 								&[data-isShip="true"] {

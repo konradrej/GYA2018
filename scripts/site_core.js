@@ -67,6 +67,7 @@ $("button#view-2-start").click(function(){
 		return;
 	}
 
+	$("section#view-3 div.actions-wrapper").empty();
 	currentGame.printBoard();
 	viewTransition(3);
 	$("span#view-3-playername").html(p1.playername);
