@@ -68,12 +68,14 @@ class ai {
 		var shipHit = false;
 
 		do {
-			shipHit = this.guessSquare();
+			setTimeout(function(){
+				shipHit = this.guessSquare();
 
-			if(p1.ships.amount == 0){
-				checkGameOver();
-				break;
-			}
+				if(p1.ships.amount == 0){
+					checkGameOver();
+					break;
+				}
+			}, 1000);
 		}while(shipHit);
 	}
 }
