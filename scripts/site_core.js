@@ -54,7 +54,7 @@ $("form#view-1-form").submit(function(e){
 
 //view 2 to view 3
 $("button#view-2-start").click(function(){
-	if(p1.shipsLeft != 0){
+	if(p1.shipsLeftToPlace != 0){
 		sendNotification("Placera alla skepp innan du startar spelet.", "error");
 
 		return;
@@ -106,20 +106,19 @@ $("#play-again").click(function(){
 	currentGame = null;
 
 	$("#view-4").fadeOut(500);
-	viewTransition(1);
+	location.reload();
 
-	//reset
-	$("#play-again").fadeOut(500, function(){
-		$("form#view-4-form").fadeIn(500);
-	});
+	//doesnt properly reset view-2
 });
 
 if(typeof(Storage) !== "undefined" && typeof(localStorage.matches) !== "undefined"){
 	var matches = JSON.parse(localStorage.matches);
 	var $container = $("div#stats div.container");
 
+	console.log(matches);
+
 	for(var i = 0; i < matches.length; i++){
-		var match = '<div class="match '+matches[i].winner+'"><div class="match--id"><h3>Match #'+(i+1)+'</h3></div><div class="match--stats"><div class="static">Namn</div><div class="name player_1">'+matches[i].p1.name+'</div><div class="name player_2">'+matches[i].p2.name+'</div><div class="static">Träffar (%)</div><div class="accuracy player_1">'+matches[i].p1.hitprocent+'</div><div class="accuracy player_2">'+matches[i].p2.hitprocent+'</div></div></div>';
+		var match = '<div class="match '+matches[i].winner+'"><div class="match--id"><h3>Match #'+(i+1)+'</h3></div><div class="match--stats"><div class="static">Namn</div><div class="name player_1">'+matches[i].p1.name+'</div><div class="name player_2">'+matches[i].p2.name+'</div><div class="static">Träffar (%)</div><div class="accuracy player_1">'+Math.round((matches[i].p1.hitpercent*100))+'</div><div class="accuracy player_2">'+Math.round((matches[i].p2.hitpercent*100))+'</div></div></div>';
 
 		$container.empty();
 		$container.prepend(match);
@@ -130,7 +129,9 @@ if(typeof(Storage) !== "undefined" && typeof(localStorage.matches) !== "undefine
 
 
 
-
+$('html,body').animate({
+	scrollTop: 0
+}, 500);
 
 
 

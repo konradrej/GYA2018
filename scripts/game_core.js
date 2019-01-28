@@ -46,6 +46,36 @@ class ai {
 			}while(!created);
 		}
 	}
+
+	guessSquare(){
+		var result;
+
+		do {
+			result = p1.checkTileHit(
+									this.generateRandomNumber(0, p1.size-1),
+									this.generateRandomNumber(0, p1.size-1)
+			);
+		}while(result.wasHit);
+
+		if(result.shipHit){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	playSquare(){
+		var shipHit = false;
+
+		do {
+			shipHit = this.guessSquare();
+
+			if(p1.ships.amount == 0){
+				checkGameOver();
+				break;
+			}
+		}while(shipHit);
+	}
 }
 
 class player {
@@ -57,16 +87,20 @@ class player {
 			this.isPlayer = true;
 		}
 
+		this.shots = 0;
+		this.hits = 0;
+
 		this.size = size;
 		this.playername = playername;
 		this.generateGrid(size);
-		this.shipsLeft = 5;
+		this.shipsLeftToPlace = 5;
 		this.ships = {
 			CARRIER: 5,
 			BATTLESHIP: 4,
 			CRUISER: 3,
 			SUBMARINE: 3,
-			DESTROYER: 2
+			DESTROYER: 2,
+			amount: 5
 		};
 	}
 
@@ -140,39 +174,74 @@ class player {
 	//this.shots = times firing, this.hits = times hitting a ship 								// FIX
 	checkTileHit(x, y){
 		if(!this.grid[x][y]['isHit']){
+			var didHit = false;
+			this.grid[x][y]['isHit'] = true;
+
 			switch(this.grid[x][y]['isShip']){
-				case shipType.CARRRIER:
-					this.ships.CARRRIER--;
+				case shipType.CARRIER:
+					this.ships.CARRIER--;
+					if(this.ships.CARRIER == 0){
+						this.ships.amount--;
+					}
+					didHit = true;
 					break;
 				case shipType.BATTLESHIP:
 					this.ships.BATTLESHIP--;
+					if(this.ships.BATTLESHIP == 0){
+						this.ships.amount--;
+					}
+					didHit = true;
 					break;
 				case shipType.CRUISER:
 					this.ships.CRUISER--;
+					if(this.ships.CRUISER == 0){
+						this.ships.amount--;
+					}
+					didHit = true;
 					break;
 				case shipType.SUBMARINE:
 					this.ships.SUBMARINE--;
+					if(this.ships.SUBMARINE == 0){
+						this.ships.amount--;
+					}
+					didHit = true;
 					break;
 				case shipType.DESTROYER:
 					this.ships.DESTROYER--;
+					if(this.ships.DESTROYER == 0){
+						this.ships.amount--;
+					}
+					didHit = true;
 					break;
-				default:
-					//empty
 			}
-
-			this.grid[x][y]['isHit'] = true;
 
 			if(this.isPlayer){
-				$("player-container div.grid_square[data-column='"+x+"'][data-row='"+y+"']").attr("data-isHit", "true");
+				$(".player-container div.grid_square[data-column='"+x+"'][data-row='"+y+"']").attr("data-isHit", "true");
 			}else{
-				$("enemy-container div.grid_square[data-column='"+x+"'][data-row='"+y+"']").attr("data-isHit", "true");
+				$(".enemy-container div.grid_square[data-column='"+x+"'][data-row='"+y+"']").attr("data-isHit", "true");
 			}
 
-			return true;
+			if(this.isPlayer){
+				p2.shots++;
+				if(didHit){
+					p2.hits++;
+				}
+			}else{
+				p1.shots++;
+				if(didHit){
+					p1.hits++;
+				}
+			}
+
+			return {
+				wasHit: false,
+				shipHit: didHit
+			};
 		}
 
-		//already hit
-		return false;
+		return {
+			wasHit: true
+		};
 	}
 
 	createShip(shipTypeID, isVertical, x, y){
@@ -210,7 +279,7 @@ class player {
 		var isValid = this.validShipPosition(ship);
 		if(isValid.empty){
 			this.placeShip(ship, isValid.xPos, isValid.yPos);
-			this.shipsLeft--;
+			this.shipsLeftToPlace--;
 
 			return true;
 		}else{
@@ -384,11 +453,65 @@ function placeShips(size, playername){
 }
 
 function gameLoop(){
-	var playing = true;
-	var computerAI = new ai();
-	computerAI.placeShips();
+	currentGame.playing = true;
+	p2.ai = new ai();
+	p2.ai.placeShips();
 
-	while(playing){
-		playing = false;
+	currentGame.isAiTurn = !(Math.random()+.5|0);
+	if(currentGame.isAiTurn){
+		p2.ai.playSquare();
+		currentGame.isAiTurn = false;
 	}
+
+	$("section#view-3 .enemy-container .grid_square").click(function(){
+		if($(this).attr("data-isHit") == "true"){
+			return;
+		}else{
+			checkGameOver();
+			if(!currentGame.isAiTurn){
+				var x = $(this).attr("data-column"),
+					y = $(this).attr("data-row");
+
+				var result = p2.checkTileHit(x, y);
+				if(result.shipHit){
+					currentGame.isAiTurn = false;
+				}else{
+					currentGame.isAiTurn = true;
+					p2.ai.playSquare();
+					currentGame.isAiTurn = false;
+				}
+			}
+		}
+	});
 }
+
+function checkGameOver(){
+	if(p1.ships.amount == 0 || p2.ships.amount == 0){
+		currentGame.playing = false;
+		$(".enemy-container .grid_square").unbind();
+
+		if(p1.ships.amount == 0){
+			currentGame.winner = "player_2";
+		}else if(p2.ships.amount == 0){
+			currentGame.winner = "player_1";
+		}
+
+		gameOver();
+		return true;
+	}
+
+	return false;
+}
+
+
+
+
+
+
+
+
+//validate user input before changing to view-2
+//action box js
+//2 differnet colors if it hit boat
+//inform about sinking a ship
+//delay computer actions

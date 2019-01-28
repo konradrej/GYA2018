@@ -27,7 +27,6 @@ sass main.scss main.css
 
 ## Todo
 - View 3 JS
-- Computer AI
 - (optional) Remote game history
 
 ## License
