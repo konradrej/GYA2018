@@ -499,7 +499,7 @@ function gameLoop(){
 				var x = $(this).attr("data-column"),
 					y = $(this).attr("data-row");
 
-				currentGame.printAction(p1.playername+" attackerade "+p1.guide.charAt(x)+(y+1));
+				currentGame.printAction(p1.playername+" attackerade "+p1.guide.charAt(x)+(parseInt(y)+1));
 
 				var result = p2.checkTileHit(x, y);
 				if(result.shipHit){
