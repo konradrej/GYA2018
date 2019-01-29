@@ -184,6 +184,14 @@ class player {
 					this.ships.CARRIER--;
 					if(this.ships.CARRIER == 0){
 						this.ships.amount--;
+
+						if(currentGame.isAiTurn){
+							currentGame.printAction(p2.playername+" sänkte hangarfartyget.");
+							sendNotification(p2.playername+" sänkte hangarfartyget.", "success");
+						}else{
+							currentGame.printAction(p1.playername+" sänkte hangarfartyget.");
+							sendNotification(p1.playername+" sänkte hangarfartyget.", "success");
+						}
 					}
 					didHit = true;
 					break;
@@ -191,6 +199,14 @@ class player {
 					this.ships.BATTLESHIP--;
 					if(this.ships.BATTLESHIP == 0){
 						this.ships.amount--;
+
+						if(currentGame.isAiTurn){
+							currentGame.printAction(p2.playername+" sänkte slagsskeppet.");
+							sendNotification(p2.playername+" sänkte slagsskeppet.", "success");
+						}else{
+							currentGame.printAction(p1.playername+" sänkte slagsskeppet.");
+							sendNotification(p1.playername+" sänkte slagsskeppet.", "success");
+						}
 					}
 					didHit = true;
 					break;
@@ -198,6 +214,14 @@ class player {
 					this.ships.CRUISER--;
 					if(this.ships.CRUISER == 0){
 						this.ships.amount--;
+
+						if(currentGame.isAiTurn){
+							currentGame.printAction(p2.playername+" sänkte kryssaren.");
+							sendNotification(p2.playername+" sänkte kryssaren.", "success");
+						}else{
+							currentGame.printAction(p1.playername+" sänkte kryssaren.");
+							sendNotification(p1.playername+" sänkte kryssaren.", "success");
+						}
 					}
 					didHit = true;
 					break;
@@ -205,6 +229,14 @@ class player {
 					this.ships.SUBMARINE--;
 					if(this.ships.SUBMARINE == 0){
 						this.ships.amount--;
+
+						if(currentGame.isAiTurn){
+							currentGame.printAction(p2.playername+" sänkte ubåten.");
+							sendNotification(p2.playername+" sänkte ubåten.", "success");
+						}else{
+							currentGame.printAction(p1.playername+" sänkte ubåten.");
+							sendNotification(p1.playername+" sänkte ubåten.", "success");
+						}
 					}
 					didHit = true;
 					break;
@@ -212,6 +244,14 @@ class player {
 					this.ships.DESTROYER--;
 					if(this.ships.DESTROYER == 0){
 						this.ships.amount--;
+
+						if(currentGame.isAiTurn){
+							currentGame.printAction(p2.playername+" sänkte jagaren.");
+							sendNotification(p2.playername+" sänkte jagaren.", "success");
+						}else{
+							currentGame.printAction(p1.playername+" sänkte jagaren.");
+							sendNotification(p1.playername+" sänkte jagaren.", "success");
+						}
 					}
 					didHit = true;
 					break;
