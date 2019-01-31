@@ -17,5 +17,5 @@
     "start_url": "https://sventastical.github.io/GYA2018/",
     "display": "standalone",
     "orientation": "portrait",
-    "prefer_related_applications" : "false",
+    "prefer_related_applications" : "false"
 }
