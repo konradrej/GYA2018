@@ -1,0 +1,21 @@
+{
+    "name": "GYA2018 - S\u00e4nka Skepp",
+    "short_name": "S\u00e4nka Skepp",
+    "description" : "Webbaserat sänka skepp spel gjort för ett gymnasiearbete.",
+    "lang" : "Swedish",
+    "dir" : "ltr",
+    "icons": [
+        {
+            "src": "https://sventastical.github.io/GYA2018/android-chrome-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#0066cc",
+    "background_color": "#0066cc",
+    "scope" : "/GYA2018/",
+    "start_url": "https://sventastical.github.io/GYA2018/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "prefer_related_applications" : "false",
+}

@@ -3,12 +3,34 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://sventastical.github.io/GYA2018/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://sventastical.github.io/GYA2018/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://sventastical.github.io/GYA2018/favicon-16x16.png">
+	<link rel="manifest" href="https://sventastical.github.io/GYA2018/site.webmanifest">
+	<link rel="mask-icon" href="https://sventastical.github.io/GYA2018/safari-pinned-tab.svg" color="#0066cc">
+	<link rel="shortcut icon" href="https://sventastical.github.io/GYA2018/favicon.ico">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-config" content="https://sventastical.github.io/GYA2018/browserconfig.xml">
+	<meta name="theme-color" content="#0066cc">
 	<title>Sänka Skepp - GYA2018</title>
 
 	<link href="./styles/main.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 </head>
 <body>
+	<script>
+		if(navigator.serviceWorker.controller){
+			console.log('[PWA Builder] active service worker found, no need to register')
+		}else{
+
+			//Register the ServiceWorker
+			navigator.serviceWorker.register('./scripts/service_worker.js', {
+				scope: './'
+			}).then(function(reg){
+				console.log('Service worker has been registered for scope:'+reg.scope);
+			});
+		}
+	</script>
 	<noscript>
 		<div class="no-js">
 			<div>
@@ -173,5 +195,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script src="./scripts/game_core.js"></script>
 	<script src="./scripts/site_core.js"></script>
+	<script src="./scripts/service_worker.js"></script>
 </body>
 </html>
