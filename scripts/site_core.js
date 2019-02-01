@@ -114,7 +114,7 @@ $("#play-again").click(function(){
 	currentGame = null;
 
 	$("#view-4").fadeOut(500);
-	location.reload();
+	window.location.href = './';
 
 	//doesnt properly reset view-2
 });
