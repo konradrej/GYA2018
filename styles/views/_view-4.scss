@@ -3,11 +3,13 @@ section#view-4 {
 	max-width: 500px;
 	width: 100%;
 	height: 223px;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	position: absolute;
 	top: 40vh;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 	border: 1px solid black;
 	background: rgba(255, 255, 255, 0.9);
 	text-align: center;
@@ -21,16 +23,24 @@ section#view-4 {
 
 	div.match {
 		div.match--stats {
+			display: -ms-grid;
 			display: grid;
+			-ms-grid-columns: minmax(95px, 1fr) 1fr 1fr;
 			grid-template-columns: minmax(95px, 1fr) 1fr 1fr;
 			border-bottom: 1px solid black;
 			border-right: 1px solid black;
 
 			div {
 				padding: 0.25em;
+				display: -webkit-box;
+				display: -webkit-flex;
 				display: flex;
-				justify-content: center;
-				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				        justify-content: center;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				        align-items: center;
 				border-top: 1px solid black;
 				border-left: 1px solid black;
 			}
@@ -94,7 +104,8 @@ section#view-4 {
 	section#view-4 {
 		padding-left: 0;
 		padding-right: 0;
-		transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+		        transform: translateY(-50%);
 		left: 0;
 	}
 }

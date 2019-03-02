@@ -9,9 +9,11 @@ section#view-1 {
 		height: 100vh;
 		position: relative;
 		border-top: 1px solid transparent;
-		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box;
 		background-image: url('../images/background.jpg');
-		background-size: cover;
+		-webkit-background-size: cover;
+		        background-size: cover;
 		background-position: 40% 50%;
 
 		form {
@@ -19,13 +21,18 @@ section#view-1 {
 			height: auto;
 			border: 1px solid black;
 			padding: 1.5em 0;
-			box-shadow: 0 0 5px black;
+			-webkit-box-shadow: 0 0 5px black;
+			        box-shadow: 0 0 5px black;
 			margin: 40vh auto 0;
-			transform: translateY(-50%);
+			-webkit-transform: translateY(-50%);
+			        transform: translateY(-50%);
 			background: rgba(255, 255, 255, 0.8);
-			animation-name: view-1_load;
-			animation-fill-mode: forwards;
-			animation-duration: 2s;
+			-webkit-animation-name: view-1_load;
+			        animation-name: view-1_load;
+			-webkit-animation-fill-mode: forwards;
+			        animation-fill-mode: forwards;
+			-webkit-animation-duration: 2s;
+			        animation-duration: 2s;
 
 			h1 {
 				display: block;
@@ -64,7 +71,8 @@ section#view-1 {
 			position: absolute;
 			bottom: 0;
 			left: 50%;
-			transform: translate(-50%, -100%);
+			-webkit-transform: translate(-50%, -100%);
+			        transform: translate(-50%, -100%);
 			text-shadow:
 				   -1px -1px 0 #000,
 					1px -1px 0 #000,
@@ -88,18 +96,24 @@ section#view-1 {
 					position: relative;
 					border-bottom: 2px solid white;
 					border-right: 2px solid white;
-					transform: rotate(45deg);
+					-webkit-transform: rotate(45deg);
+					        transform: rotate(45deg);
 					width: 10px;
 					height: 10px;
-					animation-name: scroll-arrow-1;
-					animation-duration: 3s;
-					animation-iteration-count: infinite;
-					animation-timing-function: linear;
+					-webkit-animation-name: scroll-arrow-1;
+					        animation-name: scroll-arrow-1;
+					-webkit-animation-duration: 3s;
+					        animation-duration: 3s;
+					-webkit-animation-iteration-count: infinite;
+					        animation-iteration-count: infinite;
+					-webkit-animation-timing-function: linear;
+					        animation-timing-function: linear;
 				}
 
 				&:after {
 					margin-top: -4px;
-					animation-name: scroll-arrow-2;
+					-webkit-animation-name: scroll-arrow-2;
+					        animation-name: scroll-arrow-2;
 				}
 			}
 
@@ -112,7 +126,8 @@ section#view-1 {
 		height: 100vh;
 		position: relative;
 		border-top: 1px solid transparent;
-		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box;
 		padding: 6rem 2rem 2rem;
 		background: #0066cc;
 
@@ -121,7 +136,8 @@ section#view-1 {
 			top: 2rem;
 			margin: 0;
 			left: 50%;
-			transform: translateX(-50%);
+			-webkit-transform: translateX(-50%);
+			        transform: translateX(-50%);
 			text-shadow:
 				   -1px -1px 0 #000,  
 					1px -1px 0 #000,
@@ -138,9 +154,11 @@ section#view-1 {
 			height: 100%;
 			border: 1px solid black;
 			overflow: auto;
-			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			        box-sizing: border-box;
 			background: white;
-			box-shadow: 0 0 5px black;
+			-webkit-box-shadow: 0 0 5px black;
+			        box-shadow: 0 0 5px black;
 			text-align: center;
 
 			div.match {
@@ -151,7 +169,9 @@ section#view-1 {
 				}
 
 				div.match--stats {
+					display: -ms-grid;
 					display: grid;
+					-ms-grid-columns: minmax(95px, 1fr) 1px 1fr 1px 1fr;
 					grid-template-columns: minmax(95px, 1fr) 1fr 1fr;
 					grid-gap: 1px;
 					background: black;
@@ -160,9 +180,15 @@ section#view-1 {
 
 					div {
 						padding: 0.25em;
+						display: -webkit-box;
+						display: -webkit-flex;
 						display: flex;
-						justify-content: center;
-						align-items: center;
+						-webkit-box-pack: center;
+						-webkit-justify-content: center;
+						        justify-content: center;
+						-webkit-box-align: center;
+						-webkit-align-items: center;
+						        align-items: center;
 						background: white;
 					}
 

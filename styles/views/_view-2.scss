@@ -3,7 +3,8 @@ section#view-2 {
 	min-height: 100vh;
 	background: #0066cc;
 	border-top: 1px solid transparent;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	padding: 2rem;
 	display: none;
 
@@ -14,33 +15,48 @@ section#view-2 {
 	div.wrapper {
 		max-width: 1053px;
 		height: 100%;
+		display: -webkit-box;
+		display: -webkit-flex;
 		display: flex;
 		margin: auto;
 
 		div.column {
 			&.grid-container {
 				position: relative;
-				flex: 1;
+				-webkit-box-flex: 1;
+				-webkit-flex: 1;
+				        flex: 1;
 
 				div.grid {
-					user-select: none;
+					-webkit-user-select: none;
+					   -moz-user-select: none;
+					    -ms-user-select: none;
+					        user-select: none;
 					position: relative;
 					width: 100%;
 
 					div.game_grid {
 						width: 100%;
 						height: 100%;
+						display: -ms-grid;
 						display: grid;
 						background: black;
 						position: absolute;
-						box-sizing: border-box;
+						-webkit-box-sizing: border-box;
+						        box-sizing: border-box;
 						border-bottom: 1px solid black;
 						border-right: 1px solid black;
 
 						div {
+							display: -webkit-box;
+							display: -webkit-flex;
 							display: flex;
-							justify-content: center;
-							align-items: center;
+							-webkit-box-pack: center;
+							-webkit-justify-content: center;
+							        justify-content: center;
+							-webkit-box-align: center;
+							-webkit-align-items: center;
+							        align-items: center;
 							background: white;
 							overflow: hidden;
 							border-top: 1px solid black;
@@ -56,26 +72,32 @@ section#view-2 {
 						}
 
 						&.size-5 {
+							-ms-grid-columns: (1fr)[6];
 							grid-template-columns: repeat(6, 1fr);
 						}
 
 						&.size-6 {
+							-ms-grid-columns: (1fr)[7];
 							grid-template-columns: repeat(7, 1fr);
 						}
 
 						&.size-7 {
+							-ms-grid-columns: (1fr)[8];
 							grid-template-columns: repeat(8, 1fr);
 						}
 
 						&.size-8 {
+							-ms-grid-columns: (1fr)[9];
 							grid-template-columns: repeat(9, 1fr);
 						}
 
 						&.size-9 {
+							-ms-grid-columns: (1fr)[10];
 							grid-template-columns: repeat(10, 1fr);
 						}
 
 						&.size-10 {
+							-ms-grid-columns: (1fr)[11];
 							grid-template-columns: repeat(11, 1fr);
 						}
 					}
@@ -89,7 +111,9 @@ section#view-2 {
 			}
 
 			&.toolbar {
-				flex: 0 0 240px;
+				-webkit-box-flex: 0;
+				-webkit-flex: 0 0 240px;
+				        flex: 0 0 240px;
 				padding-left: 2rem;
 
 				h1 {
@@ -115,9 +139,14 @@ section#view-2 {
 						padding: 5px;
 						margin: 0 0 5px;
 						border: 1px solid black;
-						box-sizing: border-box;
+						-webkit-box-sizing: border-box;
+						        box-sizing: border-box;
+						-webkit-transition: all 0.2s;
 						transition: all 0.2s;
-						user-select: none;
+						-webkit-user-select: none;
+						   -moz-user-select: none;
+						    -ms-user-select: none;
+						        user-select: none;
 
 						h2 {
 							margin: 0 0 5px;
@@ -243,6 +272,7 @@ section#view-2 {
 				display: block;
 
 				&.grid {
+					height: -webkit-calc(100vw - 4rem);
 					height: calc(100vw - 4rem);
 					margin: 0 0 2rem 0;
 					max-width: unset;

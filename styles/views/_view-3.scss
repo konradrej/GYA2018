@@ -3,13 +3,16 @@ section#view-3 {
 	min-height: 100vh;
 	background: #0066cc;
 	border-top: 1px solid transparent;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	padding: 2rem;
 	display: none;
 
 	div.wrapper {
 		max-width: 1053px;
+		display: -ms-grid;
 		display: grid;
+		-ms-grid-columns: 6fr 5px 3fr;
 		grid-template-columns: 6fr 3fr;
 		grid-gap: 2rem;
 		margin: auto;
@@ -30,24 +33,35 @@ section#view-3 {
 
 			&.main {
 				div.enemy-container {
-					user-select: none;
+					-webkit-user-select: none;
+					   -moz-user-select: none;
+					    -ms-user-select: none;
+					        user-select: none;
 					position: relative;
 					width: 100%;
 
 					div.game_grid {
 						width: 100%;
 						height: 100%;
+						display: -ms-grid;
 						display: grid;
 						background: black;
 						position: absolute;
-						box-sizing: border-box;
+						-webkit-box-sizing: border-box;
+						        box-sizing: border-box;
 						border-bottom: 1px solid black;
 						border-right: 1px solid black;
 
 						div {
+							display: -webkit-box;
+							display: -webkit-flex;
 							display: flex;
-							justify-content: center;
-							align-items: center;
+							-webkit-box-pack: center;
+							-webkit-justify-content: center;
+							        justify-content: center;
+							-webkit-box-align: center;
+							-webkit-align-items: center;
+							        align-items: center;
 							background: white;
 							overflow: hidden;
 							border-top: 1px solid black;
@@ -71,6 +85,7 @@ section#view-3 {
 										width: 100%;
 										height: 100%;
 										opacity: 1;
+										-webkit-transition: opacity 0.2s;
 										transition: opacity 0.2s;
 									}
 								}
@@ -104,26 +119,32 @@ section#view-3 {
 						}
 
 						&.size-5 {
+							-ms-grid-columns: (1fr)[6];
 							grid-template-columns: repeat(6, 1fr);
 						}
 
 						&.size-6 {
+							-ms-grid-columns: (1fr)[7];
 							grid-template-columns: repeat(7, 1fr);
 						}
 
 						&.size-7 {
+							-ms-grid-columns: (1fr)[8];
 							grid-template-columns: repeat(8, 1fr);
 						}
 
 						&.size-8 {
+							-ms-grid-columns: (1fr)[9];
 							grid-template-columns: repeat(9, 1fr);
 						}
 
 						&.size-9 {
+							-ms-grid-columns: (1fr)[10];
 							grid-template-columns: repeat(10, 1fr);
 						}
 
 						&.size-10 {
+							-ms-grid-columns: (1fr)[11];
 							grid-template-columns: repeat(11, 1fr);
 						}
 					}
@@ -138,24 +159,35 @@ section#view-3 {
 
 			&.sidebar {
 				div.player-container {
-					user-select: none;
+					-webkit-user-select: none;
+					   -moz-user-select: none;
+					    -ms-user-select: none;
+					        user-select: none;
 					position: relative;
 					width: 100%;
 					
 					div.game_grid {
 						width: 100%;
 						height: 100%;
+						display: -ms-grid;
 						display: grid;
 						background: black;
 						position: absolute;
-						box-sizing: border-box;
+						-webkit-box-sizing: border-box;
+						        box-sizing: border-box;
 						border-bottom: 1px solid black;
 						border-right: 1px solid black;
 
 						div {
+							display: -webkit-box;
+							display: -webkit-flex;
 							display: flex;
-							justify-content: center;
-							align-items: center;
+							-webkit-box-pack: center;
+							-webkit-justify-content: center;
+							        justify-content: center;
+							-webkit-box-align: center;
+							-webkit-align-items: center;
+							        align-items: center;
 							background: white;
 							overflow: hidden;
 							border-top: 1px solid black;
@@ -180,6 +212,7 @@ section#view-3 {
 										width: 100%;
 										height: 100%;
 										opacity: 1;
+										-webkit-transition: opacity 0.2s;
 										transition: opacity 0.2s;
 									}
 								}
@@ -213,26 +246,32 @@ section#view-3 {
 						}
 
 						&.size-5 {
+							-ms-grid-columns: (1fr)[6];
 							grid-template-columns: repeat(6, 1fr);
 						}
 
 						&.size-6 {
+							-ms-grid-columns: (1fr)[7];
 							grid-template-columns: repeat(7, 1fr);
 						}
 
 						&.size-7 {
+							-ms-grid-columns: (1fr)[8];
 							grid-template-columns: repeat(8, 1fr);
 						}
 
 						&.size-8 {
+							-ms-grid-columns: (1fr)[9];
 							grid-template-columns: repeat(9, 1fr);
 						}
 
 						&.size-9 {
+							-ms-grid-columns: (1fr)[10];
 							grid-template-columns: repeat(10, 1fr);
 						}
 
 						&.size-10 {
+							-ms-grid-columns: (1fr)[11];
 							grid-template-columns: repeat(11, 1fr);
 						}
 					}
@@ -250,7 +289,8 @@ section#view-3 {
 					margin-top: 2rem;
 					position: relative;
 					width: 100%;
-					box-sizing: border-box;
+					-webkit-box-sizing: border-box;
+					        box-sizing: border-box;
 
 					div.actions-wrapper {
 						overflow-y: scroll;
@@ -260,7 +300,11 @@ section#view-3 {
 
 						div {
 							padding: 5px;
+							display: -ms-grid;
 							display: grid;
+							-ms-grid-columns: -webkit-max-content 5px auto;
+							-ms-grid-columns: max-content 5px auto;
+							grid-template-columns: -webkit-max-content auto;
 							grid-template-columns: max-content auto;
 							grid-gap: 5px;
 
@@ -283,6 +327,7 @@ section#view-3 {
 					&:after {
 						content: '';
 						display: block;
+						padding-bottom: -webkit-calc(100% - 2rem);
 						padding-bottom: calc(100% - 2rem);
 					}
 				}
@@ -307,6 +352,7 @@ section#view-3 {
 @media (max-aspect-ratio: 9/13) {
 	section#view-3 {
 		div.wrapper {
+			-ms-grid-columns: auto;
 			grid-template-columns: auto;
 		}
 	}

@@ -20,6 +20,7 @@ html, body {
   top: 50%;
   left: 10vw;
   position: relative;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   font-size: 2.5rem;
   color: white;
@@ -44,7 +45,11 @@ div#notifications-holder div.notification {
   padding: 5px;
   font-size: 1.4em;
   margin: 0 10px 10px;
+  -webkit-transition: all 0.2s;
   transition: all 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 div#notifications-holder div.notification.error {
@@ -56,6 +61,26 @@ div#notifications-holder div.notification.success {
   background: rgba(0, 255, 0, 0.8);
 }
 
+@-webkit-keyframes scroll-arrow-1 {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 @keyframes scroll-arrow-1 {
   0% {
     opacity: 0;
@@ -70,6 +95,26 @@ div#notifications-holder div.notification.success {
     opacity: 1;
   }
   85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes scroll-arrow-2 {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
+  }
+  95% {
     opacity: 0;
   }
   100% {
@@ -96,6 +141,16 @@ div#notifications-holder div.notification.success {
     opacity: 0;
   }
 }
+@-webkit-keyframes view-1_load {
+  0% {
+    margin-top: 45vh;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 40vh;
+    opacity: 1;
+  }
+}
 @keyframes view-1_load {
   0% {
     margin-top: 45vh;
@@ -117,8 +172,10 @@ section#view-1 div#landing {
   height: 100vh;
   position: relative;
   border-top: 1px solid transparent;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background-image: url("../images/background.jpg");
+  -webkit-background-size: cover;
   background-size: cover;
   background-position: 40% 50%;
 }
@@ -127,12 +184,17 @@ section#view-1 div#landing form {
   height: auto;
   border: 1px solid black;
   padding: 1.5em 0;
+  -webkit-box-shadow: 0 0 5px black;
   box-shadow: 0 0 5px black;
   margin: 40vh auto 0;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.8);
+  -webkit-animation-name: view-1_load;
   animation-name: view-1_load;
+  -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
+  -webkit-animation-duration: 2s;
   animation-duration: 2s;
 }
 section#view-1 div#landing form h1 {
@@ -160,6 +222,7 @@ section#view-1 div#landing div {
   position: absolute;
   bottom: 0;
   left: 50%;
+  -webkit-transform: translate(-50%, -100%);
   transform: translate(-50%, -100%);
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   color: white;
@@ -176,16 +239,22 @@ section#view-1 div#landing div a.scroll-arrow:before, section#view-1 div#landing
   position: relative;
   border-bottom: 2px solid white;
   border-right: 2px solid white;
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   width: 10px;
   height: 10px;
+  -webkit-animation-name: scroll-arrow-1;
   animation-name: scroll-arrow-1;
+  -webkit-animation-duration: 3s;
   animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
 }
 section#view-1 div#landing div a.scroll-arrow:after {
   margin-top: -4px;
+  -webkit-animation-name: scroll-arrow-2;
   animation-name: scroll-arrow-2;
 }
 section#view-1 div#stats {
@@ -193,6 +262,7 @@ section#view-1 div#stats {
   height: 100vh;
   position: relative;
   border-top: 1px solid transparent;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 6rem 2rem 2rem;
   background: #0066cc;
@@ -202,6 +272,7 @@ section#view-1 div#stats h2 {
   top: 2rem;
   margin: 0;
   left: 50%;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   color: white;
@@ -214,8 +285,10 @@ section#view-1 div#stats div.container {
   height: 100%;
   border: 1px solid black;
   overflow: auto;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background: white;
+  -webkit-box-shadow: 0 0 5px black;
   box-shadow: 0 0 5px black;
   text-align: center;
 }
@@ -223,7 +296,9 @@ section#view-1 div#stats div.container div.match div.match--id h3 {
   margin: 0.5em;
 }
 section#view-1 div#stats div.container div.match div.match--stats {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: minmax(95px, 1fr) 1px 1fr 1px 1fr;
   grid-template-columns: minmax(95px, 1fr) 1fr 1fr;
   grid-gap: 1px;
   background: black;
@@ -232,8 +307,14 @@ section#view-1 div#stats div.container div.match div.match--stats {
 }
 section#view-1 div#stats div.container div.match div.match--stats div {
   padding: 0.25em;
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
   align-items: center;
   background: white;
 }
@@ -258,6 +339,7 @@ section#view-2 {
   min-height: 100vh;
   background: #0066cc;
   border-top: 1px solid transparent;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 2rem;
   display: none;
@@ -266,14 +348,21 @@ section#view-2 {
 section#view-2 div.wrapper {
   max-width: 1053px;
   height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
   margin: auto;
 }
 section#view-2 div.wrapper div.column.grid-container {
   position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
   flex: 1;
 }
 section#view-2 div.wrapper div.column.grid-container div.grid {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   position: relative;
   width: 100%;
@@ -281,16 +370,24 @@ section#view-2 div.wrapper div.column.grid-container div.grid {
 section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid {
   width: 100%;
   height: 100%;
+  display: -ms-grid;
   display: grid;
   background: black;
   position: absolute;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
 }
 section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid div {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
   align-items: center;
   background: white;
   overflow: hidden;
@@ -298,21 +395,27 @@ section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid div 
   border-left: 1px solid black;
 }
 section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid.size-5 {
+  -ms-grid-columns: 1fr [6];
   grid-template-columns: repeat(6, 1fr);
 }
 section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid.size-6 {
+  -ms-grid-columns: 1fr [7];
   grid-template-columns: repeat(7, 1fr);
 }
 section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid.size-7 {
+  -ms-grid-columns: 1fr [8];
   grid-template-columns: repeat(8, 1fr);
 }
 section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid.size-8 {
+  -ms-grid-columns: 1fr [9];
   grid-template-columns: repeat(9, 1fr);
 }
 section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid.size-9 {
+  -ms-grid-columns: 1fr [10];
   grid-template-columns: repeat(10, 1fr);
 }
 section#view-2 div.wrapper div.column.grid-container div.grid div.game_grid.size-10 {
+  -ms-grid-columns: 1fr [11];
   grid-template-columns: repeat(11, 1fr);
 }
 section#view-2 div.wrapper div.column.grid-container div.grid:after {
@@ -321,6 +424,8 @@ section#view-2 div.wrapper div.column.grid-container div.grid:after {
   padding-bottom: 100%;
 }
 section#view-2 div.wrapper div.column.toolbar {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 240px;
   flex: 0 0 240px;
   padding-left: 2rem;
 }
@@ -342,8 +447,13 @@ section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship {
   padding: 5px;
   margin: 0 0 5px;
   border: 1px solid black;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  -webkit-transition: all 0.2s;
   transition: all 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 section#view-2 div.wrapper div.column.toolbar div.container__ships div.ship h2 {
@@ -423,6 +533,7 @@ section#view-2 div.wrapper div.column.toolbar div.container__ships:after {
     display: block;
   }
   section#view-2 div.wrapper div.column.grid {
+    height: -webkit-calc(100vw - 4rem);
     height: calc(100vw - 4rem);
     margin: 0 0 2rem 0;
     max-width: unset;
@@ -451,13 +562,16 @@ section#view-3 {
   min-height: 100vh;
   background: #0066cc;
   border-top: 1px solid transparent;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 2rem;
   display: none;
 }
 section#view-3 div.wrapper {
   max-width: 1053px;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 6fr 5px 3fr;
   grid-template-columns: 6fr 3fr;
   grid-gap: 2rem;
   margin: auto;
@@ -470,6 +584,9 @@ section#view-3 div.wrapper div.column h2 {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 section#view-3 div.wrapper div.column.main div.enemy-container {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   position: relative;
   width: 100%;
@@ -477,16 +594,24 @@ section#view-3 div.wrapper div.column.main div.enemy-container {
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid {
   width: 100%;
   height: 100%;
+  display: -ms-grid;
   display: grid;
   background: black;
   position: absolute;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
 }
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
   align-items: center;
   background: white;
   overflow: hidden;
@@ -506,6 +631,7 @@ section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div
   width: 100%;
   height: 100%;
   opacity: 1;
+  -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div.grid_square[data-isShip=true]:before {
@@ -527,21 +653,27 @@ section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid div
   background: orange;
 }
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid.size-5 {
+  -ms-grid-columns: 1fr [6];
   grid-template-columns: repeat(6, 1fr);
 }
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid.size-6 {
+  -ms-grid-columns: 1fr [7];
   grid-template-columns: repeat(7, 1fr);
 }
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid.size-7 {
+  -ms-grid-columns: 1fr [8];
   grid-template-columns: repeat(8, 1fr);
 }
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid.size-8 {
+  -ms-grid-columns: 1fr [9];
   grid-template-columns: repeat(9, 1fr);
 }
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid.size-9 {
+  -ms-grid-columns: 1fr [10];
   grid-template-columns: repeat(10, 1fr);
 }
 section#view-3 div.wrapper div.column.main div.enemy-container div.game_grid.size-10 {
+  -ms-grid-columns: 1fr [11];
   grid-template-columns: repeat(11, 1fr);
 }
 section#view-3 div.wrapper div.column.main div.enemy-container:after {
@@ -550,6 +682,9 @@ section#view-3 div.wrapper div.column.main div.enemy-container:after {
   padding-bottom: 100%;
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   position: relative;
   width: 100%;
@@ -557,16 +692,24 @@ section#view-3 div.wrapper div.column.sidebar div.player-container {
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid {
   width: 100%;
   height: 100%;
+  display: -ms-grid;
   display: grid;
   background: black;
   position: absolute;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
   align-items: center;
   background: white;
   overflow: hidden;
@@ -586,6 +729,7 @@ section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid
   width: 100%;
   height: 100%;
   opacity: 1;
+  -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid div.grid_square[data-isShip=true]:before {
@@ -607,21 +751,27 @@ section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid
   background: orange;
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid.size-5 {
+  -ms-grid-columns: 1fr [6];
   grid-template-columns: repeat(6, 1fr);
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid.size-6 {
+  -ms-grid-columns: 1fr [7];
   grid-template-columns: repeat(7, 1fr);
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid.size-7 {
+  -ms-grid-columns: 1fr [8];
   grid-template-columns: repeat(8, 1fr);
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid.size-8 {
+  -ms-grid-columns: 1fr [9];
   grid-template-columns: repeat(9, 1fr);
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid.size-9 {
+  -ms-grid-columns: 1fr [10];
   grid-template-columns: repeat(10, 1fr);
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container div.game_grid.size-10 {
+  -ms-grid-columns: 1fr [11];
   grid-template-columns: repeat(11, 1fr);
 }
 section#view-3 div.wrapper div.column.sidebar div.player-container:after {
@@ -635,6 +785,7 @@ section#view-3 div.wrapper div.column.sidebar div.past-actions {
   margin-top: 2rem;
   position: relative;
   width: 100%;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 section#view-3 div.wrapper div.column.sidebar div.past-actions div.actions-wrapper {
@@ -645,7 +796,11 @@ section#view-3 div.wrapper div.column.sidebar div.past-actions div.actions-wrapp
 }
 section#view-3 div.wrapper div.column.sidebar div.past-actions div.actions-wrapper div {
   padding: 5px;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: -webkit-max-content 5px auto;
+  -ms-grid-columns: max-content 5px auto;
+  grid-template-columns: -webkit-max-content auto;
   grid-template-columns: max-content auto;
   grid-gap: 5px;
 }
@@ -655,11 +810,13 @@ section#view-3 div.wrapper div.column.sidebar div.past-actions div.actions-wrapp
 section#view-3 div.wrapper div.column.sidebar div.past-actions:after {
   content: "";
   display: block;
+  padding-bottom: -webkit-calc(100% - 2rem);
   padding-bottom: calc(100% - 2rem);
 }
 
 @media (max-aspect-ratio: 9/13) {
   section#view-3 div.wrapper {
+    -ms-grid-columns: auto;
     grid-template-columns: auto;
   }
 }
@@ -668,10 +825,12 @@ section#view-4 {
   max-width: 500px;
   width: 100%;
   height: 223px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: absolute;
   top: 40vh;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   border: 1px solid black;
   background: rgba(255, 255, 255, 0.9);
@@ -681,15 +840,23 @@ section#view-4 {
   display: none;
 }
 section#view-4 div.match div.match--stats {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: minmax(95px, 1fr) 1fr 1fr;
   grid-template-columns: minmax(95px, 1fr) 1fr 1fr;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
 }
 section#view-4 div.match div.match--stats div {
   padding: 0.25em;
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
   align-items: center;
   border-top: 1px solid black;
   border-left: 1px solid black;
@@ -713,6 +880,7 @@ section#view-4 button#play-again {
   section#view-4 {
     padding-left: 0;
     padding-right: 0;
+    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     left: 0;
   }
